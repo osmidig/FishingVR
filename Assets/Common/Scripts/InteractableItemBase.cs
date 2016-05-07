@@ -19,7 +19,6 @@ public class InteractableItemBase : MonoBehaviour
     private Transform m_origParent;
     private Transform m_transform;
 
-    private Rigidbody m_rigidbody;
     private Vector3 storedVelocity;
 
     public bool Attachable

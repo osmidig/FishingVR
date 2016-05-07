@@ -11,6 +11,7 @@ public class FishingRodInteractable : InteractableItemBase {
     public GameObject m_Bobber;
 
     private Vector3 m_DebugRodPos;
+    public GameObject yourmum;
 
 	// Use this for initialization
 	void Start () 
@@ -32,7 +33,7 @@ public class FishingRodInteractable : InteractableItemBase {
                 if( hit.collider.gameObject == gameObject )
                 {
                     m_DebugRodPos = transform.position;
-                    Attach( null, 0 );
+                    Attach( null, 0, true );
                 }
             }
         }
@@ -47,6 +48,10 @@ public class FishingRodInteractable : InteractableItemBase {
         {
             MoveRod();
         }
+
+        Debug.Log( yourmum.GetComponent<SkinnedMeshRenderer>().bounds.extents );
+
+
 	}
 
     private void MoveRod()
