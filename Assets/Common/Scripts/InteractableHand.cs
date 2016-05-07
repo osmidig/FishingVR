@@ -12,12 +12,6 @@ public class InteractableHand : MonoBehaviour
     private int m_deviceIndex = -1;
     private SteamVR_Controller.Device m_device;
 
-    public void Detach()
-    {
-        m_heldObject = null;
-        m_trackedModel.SetActive(true);
-    }
-
     void SetDeviceIndex(int index)
     {
         m_deviceIndex = index;
@@ -71,7 +65,7 @@ public class InteractableHand : MonoBehaviour
 
     private void PickupItem(InteractableItemBase item)
     {
-        if (item.Attach(transform, m_deviceIndex, true))
+        if (item.Attach(transform, this, m_deviceIndex, true))
         {
             m_heldObject = item;
             m_trackedModel.SetActive(false);
@@ -80,7 +74,7 @@ public class InteractableHand : MonoBehaviour
 
     private void AttachItem(InteractableItemBase item)
     {
-        if (item.Attach(transform, m_deviceIndex, false))
+        if (item.Attach(transform, this, m_deviceIndex, false))
         {
             m_heldObject = item;
             m_trackedModel.SetActive(false);
@@ -88,7 +82,7 @@ public class InteractableHand : MonoBehaviour
         }
     }
 
-    private void DetachItem()
+    public void DetachItem()
     {
         m_heldObject.Detach();
         m_heldObject = null;

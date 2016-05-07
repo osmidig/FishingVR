@@ -7,19 +7,20 @@ public class InteractableItemBase : MonoBehaviour
 {
     [SerializeField] private bool m_attachable = true;
 
-    private bool m_attached = false;
-    private SteamVR_Controller.Device m_device;
+    protected bool m_attached = false;
+    protected InteractableHand m_handObject;
+    protected SteamVR_Controller.Device m_device;
 
-    private Rigidbody m_rigidbody;
+    protected Rigidbody m_rigidbody;
 
-    private Vector3 m_previousPosition;
-    private Quaternion m_previousRotation;
-    private Vector3 m_previousForward;
+    protected Vector3 m_previousPosition;
+    protected Quaternion m_previousRotation;
+    protected Vector3 m_previousForward;
 
-    private Transform m_origParent;
-    private Transform m_transform;
+    protected Transform m_origParent;
+    protected Transform m_transform;
 
-    private Vector3 storedVelocity;
+    protected Vector3 storedVelocity;
 
     public bool Attachable
     {
@@ -44,7 +45,7 @@ public class InteractableItemBase : MonoBehaviour
         m_previousForward = m_transform.forward;
     }
 
-    public bool Attach(Transform parent, int deviceIndex, bool worldPositionStays)
+    public virtual bool Attach(Transform parent, InteractableHand hand, int deviceIndex, bool worldPositionStays)
     {
         if (m_attached) return false;
 
@@ -55,6 +56,7 @@ public class InteractableItemBase : MonoBehaviour
 
         m_origParent = m_transform.parent;
         m_transform.SetParent(parent, worldPositionStays);
+        m_handObject = hand;
 
         if(!worldPositionStays)
         {
@@ -68,15 +70,16 @@ public class InteractableItemBase : MonoBehaviour
         return true;
     }
 
-    public void Detach()
+    public virtual void Detach()
     {
         m_attached = false;
         m_device = null;
+        m_handObject = null;
         m_transform.SetParent(m_origParent, true);
 
         if (m_rigidbody != null)
         {
-            m_rigidbody.isKinematic = false;
+            m_rigidbody.isKinematic = true;
 
             Vector3 deltaPos = m_transform.position - m_previousPosition;
             Vector3 newVel = deltaPos / Time.deltaTime;
@@ -105,5 +108,4 @@ public class InteractableItemBase : MonoBehaviour
     {
         return m_attached;
     }
-   
 }
