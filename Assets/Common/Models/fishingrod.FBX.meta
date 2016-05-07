@@ -30,9 +30,11 @@ ModelImporter:
     2300000: RodBase
     2300002: Spinnybit
     2300004: LongRodBit
+    2300006: //RootNode
     3300000: RodBase
     3300002: Spinnybit
     3300004: LongRodBit
+    3300006: //RootNode
     4300000: RodBase
     4300002: Spinnybit
     4300004: LongRodBit
@@ -69,7 +71,7 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
+    optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
