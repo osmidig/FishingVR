@@ -4,6 +4,7 @@ using System.Collections;
 public class Spinnybit : InteractableItemBase
 {
     [SerializeField] private int m_numberOfSnaps = 10;
+    [SerializeField] private ushort m_hapticDuration = 500;
 
     private float m_currentDeltaAngle;
 
@@ -67,7 +68,7 @@ public class Spinnybit : InteractableItemBase
             {
                 m_spinnyBuildup -= snapAngle;
                 //m_device.TriggerHapticPulse(500, Valve.VR.EVRButtonId.k_EButton_Axis0);
-                m_device.TriggerHapticPulse(500, Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad); 
+                m_device.TriggerHapticPulse(m_hapticDuration, Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
             }
         }
         else
