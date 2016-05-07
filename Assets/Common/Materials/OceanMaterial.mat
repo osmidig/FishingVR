@@ -8,7 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: OceanMaterial
   m_Shader: {fileID: 4800000, guid: 2e5d60e33aa6da447bb69ec37053c5ba, type: 3}
-  m_ShaderKeywords: _DISPLACEMENTMODE_OFF _DISTORTIONQUALITY_HIGH _EMISSION _REFLECTIONTYPE_MIXED
+  m_ShaderKeywords: _DISPLACEMENTMODE_WAVE _DISTORTIONQUALITY_HIGH _EMISSION _FOAM_ON
+    _REFLECTIONTYPE_REALTIME
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
   stringTagMap: {}
@@ -19,7 +20,7 @@ Material:
         name: _BumpMap
       second:
         m_Texture: {fileID: 2800000, guid: 26409920616e41e44bcf1e1d60dcbfb2, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _Cube
@@ -54,8 +55,8 @@ Material:
     - first:
         name: _FoamTex
       second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: f3ed797cad96fec41b94d8626de3f1ab, type: 3}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
@@ -90,28 +91,28 @@ Material:
     m_Floats:
     - first:
         name: _Amplitude
-      second: 0.05
+      second: 2.74
     - first:
         name: _BumpScale
       second: 1
     - first:
         name: _BumpStrength
-      second: 1
+      second: 0.336
     - first:
         name: _Cutoff
       second: 0.5
     - first:
         name: _Depth
-      second: 0.5
+      second: 2.04
     - first:
         name: _DetailNormalMapScale
       second: 1
     - first:
         name: _DisplacementMode
-      second: 0
+      second: 1
     - first:
         name: _Distortion
-      second: 50
+      second: 66
     - first:
         name: _DistortionQuality
       second: 0
@@ -126,13 +127,13 @@ Material:
       second: 0
     - first:
         name: _FOAM
-      second: 0
+      second: 1
     - first:
         name: _FoamSize
-      second: 0.5
+      second: 1.68
     - first:
         name: _Frequency
-      second: 1
+      second: 1.02
     - first:
         name: _GlossMapScale
       second: 1
@@ -156,19 +157,19 @@ Material:
       second: 0.02
     - first:
         name: _Reflection
-      second: 1
+      second: 0.731
     - first:
         name: _ReflectionType
-      second: 0
+      second: 1
     - first:
         name: _RimPower
-      second: 5
+      second: 9.3
     - first:
         name: _Smoothing
       second: 0
     - first:
         name: _Smoothness
-      second: 0.5
+      second: 1.67
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -177,7 +178,7 @@ Material:
       second: 1
     - first:
         name: _Speed
-      second: 1
+      second: 3.41
     - first:
         name: _SpeedX
       second: 0.5
@@ -189,7 +190,7 @@ Material:
       second: 1
     - first:
         name: _Steepness
-      second: 1
+      second: 10.93
     - first:
         name: _Tess
       second: 4
@@ -202,13 +203,13 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0.49199829, g: 0.78312564, b: 0.9558824, a: 1}
     - first:
         name: _CubeColor
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _DepthColor
-      second: {r: 0, g: 0, b: 0, a: 0}
+      second: {r: 0.07974697, g: 0.2726577, b: 0.43382353, a: 0}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
@@ -217,7 +218,7 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _SpecColor
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 1, g: 0.9578093, b: 0.88235295, a: 1}
     - first:
         name: _WDirectionAB
       second: {r: 0.3, g: 0.85, b: 0.85, a: 0.25}
@@ -226,4 +227,4 @@ Material:
       second: {r: 0.1, g: 0.9, b: 0.5, a: 0.5}
     - first:
         name: _WSpeed
-      second: {r: 1.2, g: 1.375, b: 1.1, a: 1.5}
+      second: {r: 3.56, g: 5.84, b: 1.1, a: 4.63}
