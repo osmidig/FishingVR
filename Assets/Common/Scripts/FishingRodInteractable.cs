@@ -5,18 +5,26 @@ public class FishingRodInteractable : InteractableItemBase {
 
     public Bounds m_MouseMovementBounds;
     public float m_MouseSensitivity = 10.0f;
+    public float m_ReelSensitivity = 1.0f;
 
     public GameObject m_FishingRodTip;
     public GameObject m_Hook;
     public GameObject m_Bobber;
 
+    public Spinnybit m_SpinnyBit;
+
     private Vector3 m_DebugRodPos;
+
+    private bool m_spoolLocked;
+    private SpringJoint m_BobberJoint;
 
 	// Use this for initialization
 	void Start () 
     {
         m_Hook.transform.parent = null;
         m_Bobber.transform.parent = null;
+
+        m_BobberJoint = m_Bobber.GetComponent< SpringJoint >();
 	}
 	
 	// Update is called once per frame
@@ -40,7 +48,23 @@ public class FishingRodInteractable : InteractableItemBase {
         if( IsAttached() && Input.GetMouseButtonDown( 1 ) )
         {
             Detach();
-        }            
+        } 
+
+        if( IsAttached() && Input.GetMouseButtonDown( 0 ) )
+        {
+            m_BobberJoint.maxDistance = Vector3.Distance( m_Bobber.transform.position, m_FishingRodTip.transform.position );
+        } 
+
+        if( IsAttached() )
+        {
+            m_spoolLocked = Input.GetMouseButton( 0 );
+        }
+
+#else
+        if( IsAttached() )
+        {
+            m_spoolLocked = m_SpinnyBit.IsAttached() || Input.GetMouseButton( 0 );
+        }
 #endif
 
         if( IsAttached() )
@@ -48,7 +72,13 @@ public class FishingRodInteractable : InteractableItemBase {
             MoveRod();
         }
 
+        m_BobberJoint.tolerance = m_spoolLocked ? 0.0025f : 100000.0f;
 
+        if( m_SpinnyBit.GetCurrentDeltaAngle() != 0 )
+        {
+            m_BobberJoint.maxDistance = Mathf.Max( m_BobberJoint.minDistance + 0.1f, m_BobberJoint.maxDistance - m_SpinnyBit.GetCurrentDeltaAngle() * m_ReelSensitivity );
+            Debug.Log( m_BobberJoint.maxDistance );
+        }
 	}
 
     private void MoveRod()
@@ -63,7 +93,7 @@ public class FishingRodInteractable : InteractableItemBase {
         m_DebugRodPos.x = Mathf.Clamp( m_DebugRodPos.x, m_MouseMovementBounds.min.x, m_MouseMovementBounds.max.x );
         m_DebugRodPos.z = Mathf.Clamp( m_DebugRodPos.z, m_MouseMovementBounds.min.z, m_MouseMovementBounds.max.z );
 
-        m_DebugRodPos.y = 0.75f;
+        m_DebugRodPos.y = 0.00f;
 
         transform.position = m_DebugRodPos;
         transform.rotation = Quaternion.identity;

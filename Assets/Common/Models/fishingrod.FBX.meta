@@ -39,6 +39,7 @@ ModelImporter:
     4300002: Spinnybit
     4300004: LongRodBit
     9500000: //RootNode
+    11100000: //RootNode
     13700000: LongRodBit
   materials:
     importMaterials: 1

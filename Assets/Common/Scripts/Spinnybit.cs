@@ -7,6 +7,22 @@ public class Spinnybit : InteractableItemBase
 
     private Transform m_attachedHand;
 
+    public float GetCurrentDeltaAngle()
+    {
+
+#if UNITY_EDITOR_OSX
+        return Mathf.Abs( Input.mouseScrollDelta.y );
+#else
+        return m_currentDeltaAngle;
+#endif
+
+    }
+
+    public bool IsAttached()
+    {
+        return m_attachedHand != null;
+    }
+
     protected override void Update()
     {
         base.Update();
