@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: lambert4
+  m_Name: BootLeather
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -87,7 +87,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.5
+      second: 0.124
     - first:
         name: _GlossyReflections
       second: 1
@@ -121,7 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.49019608, g: 0.28120193, b: 0.24990387, a: 1}
+      second: {r: 0.46323532, g: 0.12459432, b: 0, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
