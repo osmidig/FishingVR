@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012421040008}
-  - 114: {fileID: 114000011615353236}
+  - 114: {fileID: 114000014231979768}
   - 54: {fileID: 54000010992388280}
   m_Layer: 0
   m_Name: FishingRod
@@ -201,7 +201,7 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114000011615353236
+--- !u!114 &114000014231979768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -209,6 +209,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010986105366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652de30a4a2e2a84891b19f742d3151f, type: 3}
+  m_Script: {fileID: 11500000, guid: 320ed1ee0871e7341a3f2e815d52b29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
