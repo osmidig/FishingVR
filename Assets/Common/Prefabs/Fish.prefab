@@ -168,4 +168,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attachable: 0
   m_dynamic: 1
-  m_ScaleRange: 0.7
+  m_MinScale: 0.5
+  m_MaxScale: 1.3
