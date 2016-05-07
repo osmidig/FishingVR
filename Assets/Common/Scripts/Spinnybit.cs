@@ -43,7 +43,6 @@ public class Spinnybit : InteractableItemBase
             Vector3 deltaPos = m_attachedHand.position - m_transform.position;
 
             Vector3 projectedPosition = Vector3.ProjectOnPlane(deltaPos, m_transform.forward);
-            projectedPosition.z *= -1;
 
             rotation = Quaternion.LookRotation(m_transform.forward, -projectedPosition.normalized);
 
