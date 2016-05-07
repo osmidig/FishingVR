@@ -11,6 +11,7 @@ public class FishingRodInteractable : InteractableItemBase
     public GameObject m_Hook;
     public GameObject m_Bobber;
 
+    private InteractableItemBase m_HookedObject;
     public Spinnybit m_SpinnyBit;
 
     private Vector3 m_DebugRodPos;
@@ -18,6 +19,7 @@ public class FishingRodInteractable : InteractableItemBase
     private bool m_spoolLocked;
     private bool m_spoolPreviouslyLocked;
     private SpringJoint m_BobberJoint;
+    private float m_SpoolDeltaForMaxTension = 30.0f; //what spool speed is considered "maximum" tension
 
 	// Use this for initialization
 	void Start () 
@@ -85,17 +87,36 @@ public class FishingRodInteractable : InteractableItemBase
 
         if( m_SpinnyBit.GetCurrentDeltaAngle() != 0 )
         {
-            m_BobberJoint.maxDistance = Mathf.Max( m_BobberJoint.minDistance + 0.00001f, m_BobberJoint.maxDistance - m_SpinnyBit.GetCurrentDeltaAngle() * m_ReelSensitivity );
+            m_BobberJoint.maxDistance = Mathf.Max( m_BobberJoint.minDistance + 0.00001f, 
+                                                   m_BobberJoint.maxDistance - m_SpinnyBit.GetCurrentDeltaAngle() * GetHookedItemSensitivity() * m_ReelSensitivity );
         }
        
         m_spoolPreviouslyLocked = m_spoolLocked;
 	}
 
+    public float GetReelTension()
+    {
+        float delta = Mathf.Clamp( m_SpinnyBit.GetCurrentDeltaAngle(), 0, m_SpoolDeltaForMaxTension );
+
+        return delta / m_SpoolDeltaForMaxTension;
+    }
+
+    public float GetHookedItemSensitivity()
+    {
+        return m_HookedObject != null ? m_HookedObject.GetHookedSensitivity() : 1.0f;
+    }
+
+    public void HookObject( InteractableItemBase obj )
+    {
+        m_HookedObject = obj;
+        obj.transform.SetParent( m_Hook.transform, false );
+    }
+
     private void MoveRod()
     {
 #if UNITY_EDITOR_OSX
-        float inputX = -Input.GetAxis( "Mouse Y" );
-        float inputY = Input.GetAxis( "Mouse X" );
+        float inputX = -Input.GetAxis( "Mouse X" );
+        float inputY = -Input.GetAxis( "Mouse Y" );
 
         m_DebugRodPos.x += inputX * m_MouseSensitivity * Time.deltaTime;
         m_DebugRodPos.z += inputY * m_MouseSensitivity * Time.deltaTime;
@@ -103,10 +124,13 @@ public class FishingRodInteractable : InteractableItemBase
         m_DebugRodPos.x = Mathf.Clamp( m_DebugRodPos.x, m_MouseMovementBounds.min.x, m_MouseMovementBounds.max.x );
         m_DebugRodPos.z = Mathf.Clamp( m_DebugRodPos.z, m_MouseMovementBounds.min.z, m_MouseMovementBounds.max.z );
 
-        m_DebugRodPos.y = 0.00f;
+        m_DebugRodPos.y = 0.70f;
 
         transform.position = m_DebugRodPos;
         transform.rotation = Quaternion.identity;
+        Quaternion shit = transform.rotation;
+        shit.eulerAngles = new Vector3( 0, 180, 0 );
+        transform.rotation = shit;
 
 #else
         //ADD ANY VR MOVEMENT CODE HERE, IF NECESSARY
