@@ -18,7 +18,6 @@ public class InteractableItemBase : MonoBehaviour
     protected Quaternion m_previousRotation;
     protected Vector3 m_previousForward;
 
-    protected Transform m_origParent;
     protected Transform m_transform;
 
     protected Vector3 storedVelocity;
@@ -51,6 +50,11 @@ public class InteractableItemBase : MonoBehaviour
         return Random.Range( m_minHookedTensionChangeTime, m_maxHookedTensionChangeTime );
     }
 
+    public SteamVR_Controller.Device Device
+    {
+        get { return m_device; }
+    }
+
     protected virtual void Awake()
     {
         m_transform = transform;
@@ -79,7 +83,6 @@ public class InteractableItemBase : MonoBehaviour
 #if !UNITY_EDITOR_OSX
         m_device = SteamVR_Controller.Input(deviceIndex);
 
-        m_origParent = m_transform.parent;
         m_transform.SetParent(parent, worldPositionStays);
         m_handObject = hand;
 
@@ -100,7 +103,7 @@ public class InteractableItemBase : MonoBehaviour
         m_attached = false;
         m_device = null;
         m_handObject = null;
-        m_transform.SetParent(m_origParent, true);
+        m_transform.SetParent(null, true);
 
         if (m_rigidbody != null)
         {

@@ -63,6 +63,12 @@ public class FishingLogic : MonoBehaviour {
                 //haptic value on a Coserp scale
                 float hapticVal = Mathf.Lerp(m_minTensionHapticValue, m_maxTensionHapticValue, 1.0f - Mathf.Cos( (totalTension / m_tensionToBreakFree ) * Mathf.PI * 0.5f));
 
+                SteamVR_Controller.Device device = m_FishingRod.Device;
+                if (device != null)
+                {
+                    device.TriggerHapticPulse((ushort)hapticVal);
+                }
+
                 //DO HAPTICS HERE
             }
         }
@@ -98,6 +104,12 @@ public class FishingLogic : MonoBehaviour {
         m_initialBiteLoc = m_Bobber.transform.position;
 
         //TODO HAPTICS?
+
+        SteamVR_Controller.Device device = m_FishingRod.Device;
+        if (device != null)
+        {
+            device.TriggerHapticPulse(2000);
+        }
     }
 
     private void Hook()
@@ -108,6 +120,35 @@ public class FishingLogic : MonoBehaviour {
             m_HookedObj = (InteractableItemBase)GameObject.Instantiate( m_HookableObjects[ 0 ], Vector3.zero, Quaternion.identity );
             m_FishingRod.HookObject( m_HookedObj );
             m_biteTime = 0;
+        }
+    }
+
+    void Update()
+    {
+        if (m_CurrentlyHooked)
+        {
+            if (m_HookedObj.IsAttached()) // has player grabbed it?
+            {
+                m_CurrentlyHooked = false;
+
+                //remove this catch from the list
+                if (m_HookableObjects.Count > 0)
+                {
+                    m_HookableObjects.RemoveAt(0);
+                }
+
+                //if we've caught everything, add a random "extra"
+                if (m_HookableObjects.Count == 0)
+                {
+                    m_HookableObjects.Add(m_PostGameHookableObjects[Random.Range(0, m_PostGameHookableObjects.Count)]);
+                }
+
+                ResetBite();
+            }
+        }
+        else if (!m_CurrentlyHooked && m_timeTillBite == 0)
+        {
+            WaitingForHook();
         }
     }
 
@@ -125,34 +166,9 @@ public class FishingLogic : MonoBehaviour {
                     TriggerBite();
                 }
             }
-            else if( !m_CurrentlyHooked && m_timeTillBite == 0 )
+            else if(m_CurrentlyHooked && !m_HookedObj.IsAttached())
             {
-                WaitingForHook();
-            }
-            else if( m_CurrentlyHooked )
-            {
-                if( m_HookedObj.IsAttached() ) // has player grabbed it?
-                {
-                    m_CurrentlyHooked = false;
-
-                    //remove this catch from the list
-                    if( m_HookableObjects.Count > 0 )
-                    {
-                        m_HookableObjects.RemoveAt( 0 );
-                    }
-
-                    //if we've caught everything, add a random "extra"
-                    if( m_HookableObjects.Count == 0 )
-                    {
-                        m_HookableObjects.Add( m_PostGameHookableObjects[ Random.Range( 0, m_PostGameHookableObjects.Count ) ] );
-                    }
-
-                    ResetBite();
-                }
-                else
-                {
-                    DoHooked();
-                }
+                DoHooked();
             }
         }
     }
