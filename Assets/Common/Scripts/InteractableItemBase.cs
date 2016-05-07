@@ -22,9 +22,32 @@ public class InteractableItemBase : MonoBehaviour
 
     protected Vector3 storedVelocity;
 
+    protected float m_hookedSensitivity = 0.5f;
+
+    protected float m_minHookedTensionChangeTime = 0.3f;
+    protected float m_maxHookedTensionChangeTime = 2.0f;
+
+    protected float m_minHookedTension = 0.1f;
+    protected float m_maxHookedTension = 0.9f;
+
     public bool Attachable
     {
         get { return m_attachable; }
+    }
+
+    public float GetHookedSensitivity()
+    {
+        return m_hookedSensitivity;
+    }
+
+    public float GetRandomFishTension()
+    {
+        return Random.Range( m_minHookedTension, m_maxHookedTension );
+    }
+
+    public float GetRandomFishTensionChangeTime()
+    {
+        return Random.Range( m_minHookedTensionChangeTime, m_maxHookedTensionChangeTime );
     }
 
     protected virtual void Awake()
