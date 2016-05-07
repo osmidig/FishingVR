@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c9371e49b9ae24578a30da2a8a735054
-timeCreated: 1462638776
+guid: 842016830ed6b40c4ae88c1d9faf393a
+timeCreated: 1462638751
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: palmtree
+    4300000: angrybee
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c9371e49b9ae24578a30da2a8a735054
-timeCreated: 1462638776
+guid: 4a5d92255e8973d48a8126f9fe1af7e8
+timeCreated: 1462637335
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: palmtree
+    4300000: MilkCarton
     9500000: //RootNode
   materials:
     importMaterials: 1
