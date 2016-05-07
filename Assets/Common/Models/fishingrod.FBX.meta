@@ -29,8 +29,10 @@ ModelImporter:
     400020: Spinnybit
     2300000: RodBase
     2300002: Spinnybit
+    2300004: LongRodBit
     3300000: RodBase
     3300002: Spinnybit
+    3300004: LongRodBit
     4300000: RodBase
     4300002: Spinnybit
     4300004: LongRodBit
@@ -50,7 +52,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5

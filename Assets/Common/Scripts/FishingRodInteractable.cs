@@ -32,7 +32,7 @@ public class FishingRodInteractable : InteractableItemBase {
                 if( hit.collider.gameObject == gameObject )
                 {
                     m_DebugRodPos = transform.position;
-                    Attach( null, 0 );
+                    Attach( null, null, 0, true );
                 }
             }
         }
@@ -47,6 +47,8 @@ public class FishingRodInteractable : InteractableItemBase {
         {
             MoveRod();
         }
+
+
 	}
 
     private void MoveRod()
