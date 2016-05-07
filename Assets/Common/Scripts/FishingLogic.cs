@@ -10,6 +10,8 @@ public class FishingLogic : MonoBehaviour {
     public List<InteractableItemBase> m_HookableObjects;
     public List<InteractableItemBase> m_PostGameHookableObjects;
 
+    public BobberBounce m_BobberBounce;
+
     public float m_MinBiteTime = 8.0f;
     public float m_MaxBiteTime = 25.0f;
 
@@ -159,6 +161,11 @@ public class FishingLogic : MonoBehaviour {
         else if (!m_CurrentlyHooked && m_timeTillBite == 0)
         {
             WaitingForHook();
+        }
+
+        if(!m_CurrentlyHooked && m_Bobber.transform.position.y < transform.position.y + 0.05f)
+        {
+            m_BobberBounce.DoBounce();
         }
     }
 

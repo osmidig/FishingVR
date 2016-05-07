@@ -199,6 +199,7 @@ GameObject:
   - 33: {fileID: 33000010952032594}
   - 23: {fileID: 23000010031302120}
   - 95: {fileID: 95000010019050082}
+  - 114: {fileID: 114000011274286364}
   m_Layer: 11
   m_Name: bobber1
   m_TagString: Untagged
@@ -924,6 +925,19 @@ MonoBehaviour:
   m_hook: {fileID: 4000011032562194}
   m_linePrefab: {fileID: 1000014087661118, guid: 593d8cd62b32de74d942f69ed74b18b9,
     type: 2}
+--- !u!114 &114000011274286364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012442039126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b644522a74c6a7f438ee582a4e7d5db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 1
+  m_multiplier: 0.03
 --- !u!114 &114000011354654854
 MonoBehaviour:
   m_ObjectHideFlags: 1
