@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9a10cf6e81ec94f6d89fb0e14768c1df
-timeCreated: 1462659197
+guid: 7d27a13b8d1b9eb45b0485b237969141
+timeCreated: 1462660276
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: palmtree
+    4300000: Sax
     9500000: //RootNode
   materials:
     importMaterials: 1
