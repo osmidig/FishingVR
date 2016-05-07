@@ -9,7 +9,7 @@ Material:
   m_Name: OceanMaterial
   m_Shader: {fileID: 4800000, guid: 2e5d60e33aa6da447bb69ec37053c5ba, type: 3}
   m_ShaderKeywords: _DISPLACEMENTMODE_WAVE _DISTORTIONQUALITY_HIGH _EMISSION _FOAM_ON
-    _REFLECTIONTYPE_CUBEMAP
+    _REFLECTIONTYPE_REALTIME
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
   stringTagMap: {}
@@ -160,7 +160,7 @@ Material:
       second: 0.731
     - first:
         name: _ReflectionType
-      second: 2
+      second: 1
     - first:
         name: _RimPower
       second: 9.3

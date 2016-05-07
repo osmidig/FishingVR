@@ -16,7 +16,6 @@ public class FishingRodInteractable : InteractableItemBase
     private Vector3 m_DebugRodPos;
 
     private bool m_spoolLocked;
-    private bool m_spoolPreviouslyLocked;
     private SpringJoint m_BobberJoint;
 
 	// Use this for initialization
@@ -29,10 +28,8 @@ public class FishingRodInteractable : InteractableItemBase
 	}
 	
 	// Update is called once per frame
-	protected override void Update () 
+	void Update () 
     {
-        base.Update();
-
 #if UNITY_EDITOR_OSX
         if( !IsAttached() && Input.GetMouseButtonDown( 0 ) )
         {
@@ -64,19 +61,13 @@ public class FishingRodInteractable : InteractableItemBase
         }
 
 #else
-
-        if (IsAttached() || m_SpinnyBit.IsAttached())
+        if( IsAttached() )
         {
-            m_spoolLocked = m_SpinnyBit.IsAttached() || m_device.GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
-        }
-
-        if (m_spoolLocked && m_spoolLocked != m_spoolPreviouslyLocked)
-        {
-            m_BobberJoint.maxDistance = Vector3.Distance(m_Bobber.transform.position, m_FishingRodTip.transform.position);
+            m_spoolLocked = m_SpinnyBit.IsAttached() || Input.GetMouseButton( 0 );
         }
 #endif
 
-        if ( IsAttached() )
+        if( IsAttached() )
         {
             MoveRod();
         }
@@ -85,10 +76,9 @@ public class FishingRodInteractable : InteractableItemBase
 
         if( m_SpinnyBit.GetCurrentDeltaAngle() != 0 )
         {
-            m_BobberJoint.maxDistance = Mathf.Max( m_BobberJoint.minDistance + 0.00001f, m_BobberJoint.maxDistance - m_SpinnyBit.GetCurrentDeltaAngle() * m_ReelSensitivity );
+            m_BobberJoint.maxDistance = Mathf.Max( m_BobberJoint.minDistance + 0.1f, m_BobberJoint.maxDistance - m_SpinnyBit.GetCurrentDeltaAngle() * m_ReelSensitivity );
+            Debug.Log( m_BobberJoint.maxDistance );
         }
-       
-        m_spoolPreviouslyLocked = m_spoolLocked;
 	}
 
     private void MoveRod()

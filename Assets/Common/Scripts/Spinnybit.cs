@@ -5,7 +5,6 @@ public class Spinnybit : InteractableItemBase
 {
     private float m_currentDeltaAngle;
 
-    private bool m_firstAttached = true;
     private Transform m_attachedHand;
 
     public float GetCurrentDeltaAngle()
@@ -16,6 +15,12 @@ public class Spinnybit : InteractableItemBase
 #else
         return m_currentDeltaAngle;
 #endif
+
+    }
+
+    public bool IsAttached()
+    {
+        return m_attachedHand != null;
     }
 
     protected override void Update()
@@ -45,22 +50,7 @@ public class Spinnybit : InteractableItemBase
 
             float angleAfter = m_transform.localRotation.eulerAngles.z;
             float deltaAngle = Mathf.DeltaAngle(angleBefore, angleAfter);
-
-            if(m_firstAttached)
-            {
-                m_currentDeltaAngle = 0f;
-                m_firstAttached = false;
-            }
-            else
-            {
-                m_currentDeltaAngle = Mathf.Abs(deltaAngle);
-            }
-            
-        }
-        else
-        {
-            m_firstAttached = true;
-            m_currentDeltaAngle = 0f;
+            m_currentDeltaAngle = Mathf.Abs(deltaAngle);
         }
     }
 
