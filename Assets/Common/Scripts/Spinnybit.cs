@@ -22,16 +22,16 @@ public class Spinnybit : InteractableItemBase
 
             float angleBefore = m_transform.localRotation.eulerAngles.z;
 
-            Quaternion rotation = m_transform.localRotation;
+            Quaternion rotation = m_transform.rotation;
 
             Vector3 deltaPos = m_attachedHand.position - m_transform.position;
 
             Vector3 projectedPosition = Vector3.ProjectOnPlane(deltaPos, m_transform.forward);
             projectedPosition.z *= -1;
 
-            rotation = Quaternion.LookRotation(Vector3.right, -projectedPosition.normalized);
+            rotation = Quaternion.LookRotation(m_transform.forward, -projectedPosition.normalized);
 
-            m_transform.localRotation = rotation;
+            m_transform.rotation = rotation;
 
             float angleAfter = m_transform.localRotation.eulerAngles.z;
             float deltaAngle = Mathf.DeltaAngle(angleBefore, angleAfter);
