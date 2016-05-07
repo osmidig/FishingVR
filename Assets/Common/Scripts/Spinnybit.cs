@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Spinnybit : InteractableItemBase
 {
+    private float m_currentDeltaAngle;
 
     private Transform m_attachedHand;
 
@@ -16,13 +17,25 @@ public class Spinnybit : InteractableItemBase
             if(Vector3.Distance(m_attachedHand.position, m_transform.position) > 0.5f)
             {
                 m_handObject.DetachItem();
+                return;
             }
 
+            float angleBefore = m_transform.localRotation.eulerAngles.z;
+
             Quaternion rotation = m_transform.localRotation;
-            Vector3 euler = rotation.eulerAngles;
-            euler.z += Time.deltaTime * 10f;
-            rotation.eulerAngles = euler;
+
+            Vector3 deltaPos = m_attachedHand.position - m_transform.position;
+
+            Vector3 projectedPosition = Vector3.ProjectOnPlane(deltaPos, m_transform.forward);
+            projectedPosition.z *= -1;
+
+            rotation = Quaternion.LookRotation(Vector3.right, -projectedPosition.normalized);
+
             m_transform.localRotation = rotation;
+
+            float angleAfter = m_transform.localRotation.eulerAngles.z;
+            float deltaAngle = Mathf.DeltaAngle(angleBefore, angleAfter);
+            m_currentDeltaAngle = Mathf.Abs(deltaAngle);
         }
     }
 
