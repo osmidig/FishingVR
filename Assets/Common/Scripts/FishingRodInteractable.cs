@@ -110,6 +110,10 @@ public class FishingRodInteractable : InteractableItemBase
     {
         m_HookedObject = obj;
         obj.transform.SetParent( m_Hook.transform, false );
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localRotation = Quaternion.identity;
+
+        obj.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     private void MoveRod()
