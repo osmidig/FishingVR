@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ RequireComponent ( typeof( Rigidbody ) ) ]
+[ RequireComponent ( typeof( Collider ) ) ]
 public class InteractableItemBase : MonoBehaviour
 {
     [SerializeField] private bool m_attachable = true;
@@ -16,6 +18,9 @@ public class InteractableItemBase : MonoBehaviour
 
     private Transform m_origParent;
     private Transform m_transform;
+
+    private Rigidbody m_rigidbody;
+    private Vector3 storedVelocity;
 
     public bool Attachable
     {
@@ -35,8 +40,6 @@ public class InteractableItemBase : MonoBehaviour
 
     protected virtual void LateUpdate()
     {
-
-
         m_previousPosition = m_transform.position;
         m_previousRotation = m_transform.rotation;
         m_previousForward = m_transform.forward;
@@ -47,6 +50,8 @@ public class InteractableItemBase : MonoBehaviour
         if (m_attached) return false;
 
         m_attached = true;
+
+#if !UNITY_EDITOR_OSX
         m_device = SteamVR_Controller.Input(deviceIndex);
 
         m_origParent = m_transform.parent;
@@ -59,6 +64,7 @@ public class InteractableItemBase : MonoBehaviour
         }
 
         if (m_rigidbody != null) m_rigidbody.isKinematic = true;
+#endif
 
         return true;
     }
@@ -95,4 +101,10 @@ public class InteractableItemBase : MonoBehaviour
             m_rigidbody.AddTorque(newTorque, ForceMode.Impulse);
         }
     }
+
+    public bool IsAttached()
+    {
+        return m_attached;
+    }
+   
 }

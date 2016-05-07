@@ -41,8 +41,7 @@ public class InteractableHand : MonoBehaviour
     {
         Vector2 triggerInput = m_device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
 
-
-        if (m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
+        if (m_device != null && m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
         {
             if (m_heldObject == null)
             {
