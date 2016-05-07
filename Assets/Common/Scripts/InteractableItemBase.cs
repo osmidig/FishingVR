@@ -28,7 +28,7 @@ public class InteractableItemBase : MonoBehaviour
     protected float m_maxHookedTensionChangeTime = 2.0f;
 
     protected float m_minHookedTension = 0.1f;
-    protected float m_maxHookedTension = 0.9f;
+    protected float m_maxHookedTension = 1.5f;
 
     public bool Attachable
     {
