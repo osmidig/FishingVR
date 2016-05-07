@@ -8,6 +8,7 @@ public class InteractableHand : MonoBehaviour
     private InteractableItemBase m_heldObject;
 
     private bool m_itemAttached = false;
+    private bool m_triggerUsed = false;
 
     private int m_deviceIndex = -1;
     private SteamVR_Controller.Device m_device;
@@ -31,8 +32,15 @@ public class InteractableHand : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        m_triggerUsed = false;
+    }
+
     void OnTriggerStay(Collider other)
     {
+        if (m_triggerUsed) return;
+
         Vector2 triggerInput = m_device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
 
         if (m_device != null && m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
@@ -43,11 +51,13 @@ public class InteractableHand : MonoBehaviour
                 if (item != null && item.Attachable)
                 {
                     AttachItem(item);
+                    m_triggerUsed = true;
                 }
             }
             else
             {
                 DetachItem();
+                m_triggerUsed = true;
             }
         }
         else if (triggerInput.x >= 0.5f)
@@ -58,6 +68,7 @@ public class InteractableHand : MonoBehaviour
                 if (item != null)
                 {
                     PickupItem(item);
+                    m_triggerUsed = true;
                 }
             }
         }
