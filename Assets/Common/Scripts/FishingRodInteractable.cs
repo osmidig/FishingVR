@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FishingRodInteractable : InteractableItemBase {
-
+public class FishingRodInteractable : InteractableItemBase
+{
     public Bounds m_MouseMovementBounds;
     public float m_MouseSensitivity = 10.0f;
     public float m_ReelSensitivity = 1.0f;

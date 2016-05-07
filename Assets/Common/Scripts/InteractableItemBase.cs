@@ -6,6 +6,7 @@ using System.Collections;
 public class InteractableItemBase : MonoBehaviour
 {
     [SerializeField] private bool m_attachable = true;
+    [SerializeField] private bool m_dynamic = true;
 
     protected bool m_attached = false;
     protected InteractableHand m_handObject;
@@ -54,6 +55,7 @@ public class InteractableItemBase : MonoBehaviour
     {
         m_transform = transform;
         m_rigidbody = GetComponent<Rigidbody>();
+        if(m_rigidbody != null) m_rigidbody.isKinematic = !m_dynamic;
     }
 
     protected virtual void Update()
@@ -102,7 +104,7 @@ public class InteractableItemBase : MonoBehaviour
 
         if (m_rigidbody != null)
         {
-            m_rigidbody.isKinematic = true;
+            m_rigidbody.isKinematic = !m_dynamic;
 
             Vector3 deltaPos = m_transform.position - m_previousPosition;
             Vector3 newVel = deltaPos / Time.deltaTime;
