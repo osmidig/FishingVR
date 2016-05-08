@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a1ee00cc2837e4564903e78271ccb307
-timeCreated: 1462712492
+guid: ed87efcd7f5d247b2b3a13a7b1ca49a3
+timeCreated: 1462712304
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: cactus
+    4300000: duckie
     9500000: //RootNode
   materials:
     importMaterials: 1
