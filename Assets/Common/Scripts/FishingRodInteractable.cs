@@ -23,6 +23,8 @@ public class FishingRodInteractable : InteractableItemBase
     private SpringJoint m_BobberJoint;
     private float m_SpoolDeltaForMaxTension = 30.0f; //what spool speed is considered "maximum" tension
 
+    private FishingLogic m_fishingLogic;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -30,6 +32,8 @@ public class FishingRodInteractable : InteractableItemBase
         m_Bobber.transform.parent = null;
 
         m_BobberJoint = m_Bobber.GetComponent< SpringJoint >();
+
+        m_fishingLogic = FindObjectOfType<FishingLogic>();
 	}
 	
 	// Update is called once per frame
@@ -95,6 +99,16 @@ public class FishingRodInteractable : InteractableItemBase
        
         m_spoolPreviouslyLocked = m_spoolLocked;
 
+        Color textColor = Color.white;
+
+        float sqrDist = m_Bobber.transform.position.sqrMagnitude;
+        float sqrMin = m_fishingLogic.m_MediumFishingRadius * m_fishingLogic.m_MediumFishingRadius;
+        if(m_fishingLogic != null && sqrDist < sqrMin)
+        {
+            textColor = Color.red;
+        }
+
+        m_uiText.color = textColor;
         m_uiText.text = ((int)Vector3.Distance(m_FishingRodTip.transform.position, m_Bobber.transform.position)).ToString() + "m";
 	}
 
