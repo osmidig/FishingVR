@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000013688313288}
   - 54: {fileID: 54000012731327208}
   - 114: {fileID: 114000013328084602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kebab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - 23: {fileID: 23000013224017588}
   - 95: {fileID: 95000010513184098}
   - 136: {fileID: 136000010361893890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: kebab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010739174194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.6921, y: -29.800146, z: 10.018114}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012309194630}

@@ -23,7 +23,7 @@ GameObject:
   - 23: {fileID: 23000010408251674}
   - 95: {fileID: 95000012811547598}
   - 114: {fileID: 114000012484968286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - 23: {fileID: 23000010380447534}
   - 95: {fileID: 95000011118553384}
   - 114: {fileID: 114000011975306982}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012609127112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.89, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000011386587378}

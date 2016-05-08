@@ -22,7 +22,8 @@ GameObject:
   - 33: {fileID: 33000013980107556}
   - 23: {fileID: 23000012082808336}
   - 95: {fileID: 95000011560828948}
-  m_Layer: 0
+  - 65: {fileID: 65000012469557368}
+  m_Layer: 9
   m_Name: fish3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +40,7 @@ GameObject:
   - 4: {fileID: 4000012438129366}
   - 54: {fileID: 54000012079105876}
   - 114: {fileID: 114000014086911724}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fish3 - green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ GameObject:
   - 23: {fileID: 23000013794601400}
   - 95: {fileID: 95000012118983852}
   - 114: {fileID: 114000010969192416}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eyeball (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +78,7 @@ GameObject:
   - 23: {fileID: 23000012956532706}
   - 95: {fileID: 95000011656457512}
   - 114: {fileID: 114000013896974852}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eyeball (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012228398036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7633, y: -4.107472, z: 3.3316922}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000011567454968}
@@ -264,6 +265,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65000012469557368
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010567201200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18142906, y: 0.25307417, z: 0.48918113}
+  m_Center: {x: 0.003095664, y: 0.004812479, z: -0.028528973}
 --- !u!95 &95000011560828948
 Animator:
   serializedVersion: 3

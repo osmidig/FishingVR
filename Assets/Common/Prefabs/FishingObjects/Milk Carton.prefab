@@ -23,7 +23,7 @@ GameObject:
   - 23: {fileID: 23000013550180218}
   - 95: {fileID: 95000012180514102}
   - 65: {fileID: 65000011190177236}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: milkcarton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - 4: {fileID: 4000011991813086}
   - 54: {fileID: 54000011280766082}
   - 114: {fileID: 114000014240377502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Milk Carton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012916334770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.446766, y: -29.976004, z: 9.871705}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000011525426772}

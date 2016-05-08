@@ -23,7 +23,7 @@ GameObject:
   - 23: {fileID: 23000014081794988}
   - 95: {fileID: 95000011625757144}
   - 65: {fileID: 65000010632352124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - 4: {fileID: 4000012646196860}
   - 54: {fileID: 54000014287481402}
   - 114: {fileID: 114000010698496254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011985107726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.59087, y: -29.599424, z: 10.034194}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012622429772}

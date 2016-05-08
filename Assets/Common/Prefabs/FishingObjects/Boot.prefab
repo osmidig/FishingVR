@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000011956484568}
   - 54: {fileID: 54000011884802370}
   - 114: {fileID: 114000013185366258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - 23: {fileID: 23000014077430056}
   - 95: {fileID: 95000012044963956}
   - 65: {fileID: 65000011389506834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: boot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011475953076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.44812, y: -30.044453, z: 9.866552}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000010827866464}

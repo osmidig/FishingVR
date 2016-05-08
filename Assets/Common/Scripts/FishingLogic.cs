@@ -73,7 +73,7 @@ public class FishingLogic : MonoBehaviour {
 
         float totalTension = ( m_ActualFishTension + m_FishingRod.GetReelTension() ) * 0.5f;
 
-        if( totalTension > m_tensionToBreakFree )
+        if( totalTension > m_tensionToBreakFree * 100.0f ) //hack so jam players dont lose fish
         {
             GameObject.Destroy( m_HookedObj.gameObject ); //we didnt get it, destroy it
             ResetBite();

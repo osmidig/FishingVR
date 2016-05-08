@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013239520172}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane Transform 1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - 4: {fileID: 4000010649517910}
   - 198: {fileID: 198000012970868130}
   - 199: {fileID: 199000013393926856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012287348356}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane Transform 1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013404679890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013790466994}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 4: {fileID: 4000012027910296}
   - 33: {fileID: 33000011939103218}
   - 23: {fileID: 23000012268619622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jar_BrokenBot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - 95: {fileID: 95000013675002084}
   - 54: {fileID: 54000013626696136}
   - 114: {fileID: 114000011535397932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AngryBeeJar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011659264988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane Transform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,8 @@ GameObject:
   - 4: {fileID: 4000013784958896}
   - 33: {fileID: 33000014025315966}
   - 23: {fileID: 23000010532450420}
-  m_Layer: 0
+  - 65: {fileID: 65000013975074988}
+  m_Layer: 9
   m_Name: Jar_Unbroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +166,7 @@ GameObject:
   - 4: {fileID: 4000011711937346}
   - 33: {fileID: 33000010338607366}
   - 23: {fileID: 23000011824189972}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jar_BrokenTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +181,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010139178630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane Transform 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +198,7 @@ GameObject:
   - 4: {fileID: 4000014260814908}
   - 33: {fileID: 33000013011225070}
   - 23: {fileID: 23000010000548736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jar_Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,6 +528,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65000013975074988
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013483522672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16884163, y: 0.16627654, z: 0.20235008}
+  m_Center: {x: 0, y: -0.0000000037252903, z: 0.10117504}
 --- !u!95 &95000013675002084
 Animator:
   serializedVersion: 3

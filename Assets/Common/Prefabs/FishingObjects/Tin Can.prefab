@@ -23,7 +23,7 @@ GameObject:
   - 23: {fileID: 23000011003315332}
   - 95: {fileID: 95000013508706778}
   - 64: {fileID: 64000013277774740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tincan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - 4: {fileID: 4000013915533008}
   - 54: {fileID: 54000012795924266}
   - 114: {fileID: 114000012839413464}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tin Can
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011976426820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.44812, y: -30.044453, z: 9.866552}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000013606809890}
