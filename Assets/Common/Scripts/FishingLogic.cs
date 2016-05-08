@@ -15,6 +15,7 @@ public class FishingLogic : MonoBehaviour {
 
     public float m_MinBiteTime = 8.0f;
     public float m_MaxBiteTime = 25.0f;
+    public float m_MinFishingRadius = 25.0f;
 
     public float m_SplashForce = 10.0f;
     public ParticleSystem m_SplashEffect;
@@ -186,10 +187,12 @@ public class FishingLogic : MonoBehaviour {
             {
                 if (collision.relativeVelocity.sqrMagnitude > Mathf.Pow(m_SplashForce, 2.0f))
                 {
+                    m_SplashEffect.transform.position = collision.transform.position;
                     m_SplashEffect.Play();
                 }
                 else
                 {
+                    m_BobberEffect.transform.position = collision.transform.position;
                     m_BobberEffect.Play();
                 }
                 m_bobberEffectTimer = m_bobberEffectDelay;
@@ -199,7 +202,9 @@ public class FishingLogic : MonoBehaviour {
 
     void OnCollisionStay(Collision collision)
     {
-        if( collision.collider.gameObject == m_Bobber )
+        //Bites and hooking can only happen beyond minimum fishing radius
+        bool IsBeyondMinFishing = collision.transform.position.sqrMagnitude > Mathf.Pow( m_MinFishingRadius, 2.0f );
+        if( collision.collider.gameObject == m_Bobber && IsBeyondMinFishing )
         {
             if( !m_CurrentlyHooked && m_timeTillBite > 0 && m_HookableObjects.Count > 0 )
             {
@@ -224,5 +229,11 @@ public class FishingLogic : MonoBehaviour {
                 DoHooked();
             }
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere( Vector3.zero, m_MinFishingRadius );
     }
 }
