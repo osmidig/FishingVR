@@ -9,6 +9,7 @@ public class InteractableHand : MonoBehaviour
 
     private bool m_itemAttached = false;
     private bool m_triggerUsed = false;
+    private bool m_attachedThisFrame = false;
 
     private int m_deviceIndex = -1;
     private SteamVR_Controller.Device m_device;
@@ -21,15 +22,16 @@ public class InteractableHand : MonoBehaviour
 
     void Update()
     {
+        if (m_device == null) return;
+
         if(m_heldObject != null)
         {
-            Vector2 triggerInput = m_device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
-
-            if (triggerInput.x < 0.5f && !m_itemAttached)
+            if((m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip) || (!m_device.GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger) && !m_itemAttached)) && !m_attachedThisFrame)
             {
                 DetachItem();
             }
         }
+        m_attachedThisFrame = false;
     }
 
     void FixedUpdate()
@@ -41,33 +43,21 @@ public class InteractableHand : MonoBehaviour
     {
         if (m_triggerUsed) return;
 
-        Vector2 triggerInput = m_device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
-
-        if (m_device != null && m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
-        {
-            if (m_heldObject == null)
-            {
-                InteractableItemBase item = other.GetComponentInParent<InteractableItemBase>();
-                if (item != null && item.Attachable)
-                {
-                    AttachItem(item);
-                    m_triggerUsed = true;
-                }
-            }
-            else
-            {
-                DetachItem();
-                m_triggerUsed = true;
-            }
-        }
-        else if (triggerInput.x >= 0.5f)
+        if (m_device != null && (m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip) || m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger)))
         {
             if (m_heldObject == null)
             {
                 InteractableItemBase item = other.GetComponentInParent<InteractableItemBase>();
                 if (item != null)
                 {
-                    PickupItem(item);
+                    if(item.Attachable)
+                    {
+                        AttachItem(item);
+                    }
+                    else
+                    {
+                        PickupItem(item);
+                    }
                     m_triggerUsed = true;
                 }
             }
@@ -80,6 +70,7 @@ public class InteractableHand : MonoBehaviour
         {
             m_heldObject = item;
             m_trackedModel.SetActive(false);
+            m_attachedThisFrame = true;
         }
     }
 
@@ -89,6 +80,7 @@ public class InteractableHand : MonoBehaviour
         {
             m_heldObject = item;
             m_trackedModel.SetActive(false);
+            m_attachedThisFrame = true;
             m_itemAttached = true;
         }
     }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 13df909645f74460494b9c0af4e6e412
-timeCreated: 1462702194
+guid: 6ab9e5d88a85547a0a5cbdcef3c73bff
+timeCreated: 1462703761
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: fish1
+    4300000: fish3
     9500000: //RootNode
   materials:
     importMaterials: 1

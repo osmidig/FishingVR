@@ -11,9 +11,13 @@ public class FishingLogic : MonoBehaviour {
     public List<InteractableItemBase> m_PostGameHookableObjects;
 
     public BobberBounce m_BobberBounce;
+    public ParticleSystem m_BobberEffect;
 
     public float m_MinBiteTime = 8.0f;
     public float m_MaxBiteTime = 25.0f;
+
+    public float m_SplashForce = 10.0f;
+    public ParticleSystem m_SplashEffect;
 
     private float m_timeTillBite;
 
@@ -34,6 +38,9 @@ public class FishingLogic : MonoBehaviour {
     private float m_minTensionHapticValue = 500;
     private float m_maxTensionHapticValue_PreWarning = 1500;
     private float m_maxTensionHapticValue_PostWarning = 3999;
+
+    private float m_bobberEffectTimer = 0;
+    private float m_bobberEffectDelay = 1.0f;
 
 
     // Use this for initialization
@@ -166,6 +173,26 @@ public class FishingLogic : MonoBehaviour {
         if(!m_CurrentlyHooked && m_Bobber.transform.position.y < transform.position.y + 0.05f)
         {
             m_BobberBounce.DoBounce();
+        }
+
+        m_bobberEffectTimer = Mathf.Max( 0, m_bobberEffectTimer - Time.deltaTime );
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
+        if( collision.collider.gameObject == m_Bobber )
+        {
+            if( m_bobberEffectTimer == 0 )
+            {
+                m_BobberEffect.Play();
+                m_bobberEffectTimer = m_bobberEffectDelay;
+            }
+
+            if( collision.relativeVelocity.sqrMagnitude > Mathf.Pow( m_SplashForce, 2.0f ) )
+            {
+                m_SplashEffect.Play();
+            }
         }
     }
 
