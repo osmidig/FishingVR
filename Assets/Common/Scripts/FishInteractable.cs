@@ -23,6 +23,8 @@ public class FishInteractable : InteractableItemBase
     {
         base.Awake();
 
+        if (m_FishMesh == null) m_FishMesh = GetComponentInChildren<MeshRenderer>();
+
         float newScale = Random.Range( m_MinScale, m_MaxScale);
 
         m_minHookedTension = Mathf.Clamp( m_minHookedTension * newScale, 0.1f, 1.9f );
