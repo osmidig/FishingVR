@@ -16,6 +16,9 @@ public class FishingRodInteractable : InteractableItemBase
 
     public TextMesh m_uiText;
 
+    public AudioClip m_lock;
+    public AudioClip m_release;
+
     private Vector3 m_DebugRodPos;
 
     private bool m_spoolLocked;
@@ -23,11 +26,13 @@ public class FishingRodInteractable : InteractableItemBase
     private SpringJoint m_BobberJoint;
     private float m_SpoolDeltaForMaxTension = 30.0f; //what spool speed is considered "maximum" tension
 
+    private AudioSource m_audio;
     private FishingLogic m_fishingLogic;
 
     protected override void Awake()
     {
         base.Awake();
+        m_audio = GetComponent<AudioSource>();
     }
 
 	// Use this for initialization
@@ -86,6 +91,19 @@ public class FishingRodInteractable : InteractableItemBase
         if (m_spoolLocked && m_spoolLocked != m_spoolPreviouslyLocked)
         {
             m_BobberJoint.maxDistance = Vector3.Distance(m_Bobber.transform.position, m_FishingRodTip.transform.position);
+        }
+
+
+        if(IsAttached())
+        {
+            if(m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
+            {
+                m_audio.PlayOneShot(m_lock);
+            }
+            else if(m_device.GetPressUp(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
+            {
+                m_audio.PlayOneShot(m_release);
+            }
         }
 #endif
 
