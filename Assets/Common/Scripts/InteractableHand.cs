@@ -47,7 +47,6 @@ public class InteractableHand : MonoBehaviour
         {
             if (m_heldObject == null)
             {
-                print("press in trigger DD:");
                 InteractableItemBase item = other.GetComponentInParent<InteractableItemBase>();
                 if (item != null)
                 {
