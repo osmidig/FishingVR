@@ -104,13 +104,19 @@ public class FishingRodInteractable : InteractableItemBase
        
         m_spoolPreviouslyLocked = m_spoolLocked;
 
-        Color textColor = Color.white;
+        Color textColor = Color.yellow;
 
         float sqrDist = m_Bobber.transform.position.sqrMagnitude;
-        float sqrMin = m_fishingLogic.m_MediumFishingRadius * m_fishingLogic.m_MediumFishingRadius;
-        if(m_fishingLogic != null && sqrDist < sqrMin)
+        float sqrMid = m_fishingLogic.m_MediumFishingRadius * m_fishingLogic.m_MediumFishingRadius;
+        float sqrLong = m_fishingLogic.m_LongFishingRadius * m_fishingLogic.m_LongFishingRadius;
+
+        if (sqrDist < sqrMid)
         {
-            textColor = Color.red;
+            textColor = Color.white;
+        }
+        else if(sqrDist > sqrLong)
+        {
+            textColor = Color.green;
         }
 
         m_uiText.color = textColor;
