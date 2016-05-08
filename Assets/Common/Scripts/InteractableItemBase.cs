@@ -2,7 +2,6 @@
 using System.Collections;
 
 [ RequireComponent ( typeof( Rigidbody ) ) ]
-[ RequireComponent ( typeof( Collider ) ) ]
 public class InteractableItemBase : MonoBehaviour
 {
     [SerializeField] private bool m_attachable = true;
@@ -54,6 +53,8 @@ public class InteractableItemBase : MonoBehaviour
     {
         get { return m_device; }
     }
+
+    public bool OnMouth { get; set; }
 
     protected virtual void Awake()
     {
