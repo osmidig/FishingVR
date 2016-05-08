@@ -14,6 +14,8 @@ public class FishingRodInteractable : InteractableItemBase
     private InteractableItemBase m_HookedObject;
     public Spinnybit m_SpinnyBit;
 
+    public TextMesh m_uiText;
+
     private Vector3 m_DebugRodPos;
 
     private bool m_spoolLocked;
@@ -92,6 +94,8 @@ public class FishingRodInteractable : InteractableItemBase
         }
        
         m_spoolPreviouslyLocked = m_spoolLocked;
+
+        m_uiText.text = ((int)Vector3.Distance(m_FishingRodTip.transform.position, m_Bobber.transform.position)).ToString() + "m";
 	}
 
     public float GetReelTension()

@@ -7,15 +7,18 @@ public class FishingLogic : MonoBehaviour {
     public FishingRodInteractable m_FishingRod;
     public GameObject m_Bobber;
 
-    public List<InteractableItemBase> m_HookableObjects;
-    public List<InteractableItemBase> m_PostGameHookableObjects;
+    public List<InteractableItemBase> m_HookableObjects_Medium;
+    public List<InteractableItemBase> m_HookableObjects_Long;
+    public List<InteractableItemBase> m_PostGameHookableObjects_Medium;
+    public List<InteractableItemBase> m_PostGameHookableObjects_Long;
 
     public BobberBounce m_BobberBounce;
     public ParticleSystem m_BobberEffect;
 
     public float m_MinBiteTime = 8.0f;
     public float m_MaxBiteTime = 25.0f;
-    public float m_MinFishingRadius = 25.0f;
+    public float m_MediumFishingRadius = 14.0f;
+    public float m_LongFishingRadius = 22.0f;
 
     public float m_SplashForce = 10.0f;
     public ParticleSystem m_SplashEffect;
@@ -59,8 +62,7 @@ public class FishingLogic : MonoBehaviour {
         {
             m_lastFishTensionChangeTime = m_HookedObj.GetRandomFishTensionChangeTime();
             m_targetFishTension = m_HookedObj.GetRandomFishTension();
-        }
-        
+        }        
         
         m_lastFishTensionChangeTime -= Time.deltaTime;
         m_ActualFishTension = Mathf.Lerp( m_ActualFishTension, m_targetFishTension, 0.8f );
@@ -132,12 +134,42 @@ public class FishingLogic : MonoBehaviour {
         }
     }
 
+    private List<InteractableItemBase> GetFishBucket()
+    {
+        if( m_Bobber.transform.position.sqrMagnitude > Mathf.Pow( m_LongFishingRadius, 2.0f ) )
+        {
+            return m_HookableObjects_Long;
+        }
+        else if( m_Bobber.transform.position.sqrMagnitude > Mathf.Pow( m_MediumFishingRadius, 2.0f ) )
+        {
+            return m_HookableObjects_Medium;
+        }
+
+        return null;
+    }
+
+    private List<InteractableItemBase> GetPostGameFishBucket()
+    {
+        if( m_Bobber.transform.position.sqrMagnitude > Mathf.Pow( m_LongFishingRadius, 2.0f ) )
+        {
+            return m_PostGameHookableObjects_Long;
+        }
+        else if( m_Bobber.transform.position.sqrMagnitude > Mathf.Pow( m_MediumFishingRadius, 2.0f ) )
+        {
+            return m_PostGameHookableObjects_Medium;
+        }
+
+        return null;
+    }
+
     private void Hook()
     {
-        if(m_HookableObjects.Count > 0 )
+        List<InteractableItemBase> bucket = GetFishBucket();
+
+        if( bucket != null && bucket.Count > 0 )
         {
             m_CurrentlyHooked = true;
-            m_HookedObj = (InteractableItemBase)GameObject.Instantiate( m_HookableObjects[ 0 ], Vector3.zero, Quaternion.identity );
+            m_HookedObj = (InteractableItemBase)GameObject.Instantiate( bucket[ 0 ], Vector3.zero, Quaternion.identity );
             m_FishingRod.HookObject( m_HookedObj );
             m_biteTime = 0;
         }
@@ -151,16 +183,19 @@ public class FishingLogic : MonoBehaviour {
             {
                 m_CurrentlyHooked = false;
 
+                List<InteractableItemBase> bucket = GetFishBucket();
+                List<InteractableItemBase> postGameBucket = GetPostGameFishBucket();
+
                 //remove this catch from the list
-                if (m_HookableObjects.Count > 0)
+                if (bucket.Count > 0)
                 {
-                    m_HookableObjects.RemoveAt(0);
+                    bucket.RemoveAt(0);
                 }
 
                 //if we've caught everything, add a random "extra"
-                if (m_HookableObjects.Count == 0)
+                if (bucket.Count == 0)
                 {
-                    m_HookableObjects.Add(m_PostGameHookableObjects[Random.Range(0, m_PostGameHookableObjects.Count)]);
+                    bucket.Add(postGameBucket[Random.Range(0, postGameBucket.Count)]);
                 }
 
                 ResetBite();
@@ -190,11 +225,10 @@ public class FishingLogic : MonoBehaviour {
                     m_SplashEffect.transform.position = collision.transform.position;
                     m_SplashEffect.Play();
                 }
-                else
-                {
-                    m_BobberEffect.transform.position = collision.transform.position;
-                    m_BobberEffect.Play();
-                }
+
+                m_BobberEffect.transform.position = collision.transform.position;
+                m_BobberEffect.Play();
+
                 m_bobberEffectTimer = m_bobberEffectDelay;
             }
         }
@@ -203,10 +237,12 @@ public class FishingLogic : MonoBehaviour {
     void OnCollisionStay(Collision collision)
     {
         //Bites and hooking can only happen beyond minimum fishing radius
-        bool IsBeyondMinFishing = collision.transform.position.sqrMagnitude > Mathf.Pow( m_MinFishingRadius, 2.0f );
+        bool IsBeyondMinFishing = collision.transform.position.sqrMagnitude > Mathf.Pow( m_MediumFishingRadius, 2.0f );
         if( collision.collider.gameObject == m_Bobber && IsBeyondMinFishing )
         {
-            if( !m_CurrentlyHooked && m_timeTillBite > 0 && m_HookableObjects.Count > 0 )
+            List<InteractableItemBase> bucket = GetFishBucket();
+
+            if( !m_CurrentlyHooked && m_timeTillBite > 0 && bucket.Count > 0 )
             {
                 m_timeTillBite -= Time.fixedDeltaTime;
 
@@ -234,6 +270,8 @@ public class FishingLogic : MonoBehaviour {
     void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere( Vector3.zero, m_MinFishingRadius );
+        Gizmos.DrawWireSphere( Vector3.zero, m_MediumFishingRadius );
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere( Vector3.zero, m_LongFishingRadius );
     }
 }
