@@ -40,9 +40,9 @@ public class FishingLogic : MonoBehaviour {
     protected float m_lastFishTensionChangeTime;
     private float m_ActualFishTension;
     private float m_tensionToBreakFree = 0.7f;
-    private float m_tensionWarningZone = 0.1f;
+    private float m_tensionWarningZone = 0.15f;
     private float m_minTensionHapticValue = 500;
-    private float m_maxTensionHapticValue_PreWarning = 1500;
+    private float m_maxTensionHapticValue_PreWarning = 1000;
     private float m_maxTensionHapticValue_PostWarning = 3999;
 
     private float m_bobberEffectTimer = 0;
