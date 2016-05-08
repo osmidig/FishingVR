@@ -110,12 +110,7 @@ public class FishingRodInteractable : InteractableItemBase
     {
         m_HookedObject = obj;
 
-        Vector3 scale = obj.transform.localScale;
-        scale.x *= 1.0f / m_Hook.transform.localScale.x;
-        scale.y *= 1.0f / m_Hook.transform.localScale.y;
-        scale.z *= 1.0f / m_Hook.transform.localScale.z;
-
-        obj.transform.SetParent( m_Hook.transform, false );
+        obj.transform.SetParent( m_Hook.transform, true );
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localRotation = Quaternion.identity;
 

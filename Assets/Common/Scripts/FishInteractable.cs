@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class FishInteractable : InteractableItemBase
 {
-    public float m_ScaleRange = 0.3f;
+    public float m_MinScale = 0.5f;
+    public float m_MaxScale = 1.3f;
 
     public MeshRenderer m_FishMesh;
 
@@ -22,7 +23,7 @@ public class FishInteractable : InteractableItemBase
     {
         base.Awake();
 
-        float newScale = Random.Range( 1.0f - m_ScaleRange, 1.0f + m_ScaleRange );
+        float newScale = Random.Range( m_MinScale, m_MaxScale);
 
         m_minHookedTension = Mathf.Clamp( m_minHookedTension * newScale, 0.1f, 1.9f );
         m_maxHookedTension = Mathf.Clamp( m_maxHookedTension * newScale, 0.1f, 1.9f );

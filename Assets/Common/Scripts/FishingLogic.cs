@@ -10,6 +10,8 @@ public class FishingLogic : MonoBehaviour {
     public List<InteractableItemBase> m_HookableObjects;
     public List<InteractableItemBase> m_PostGameHookableObjects;
 
+    public BobberBounce m_BobberBounce;
+
     public float m_MinBiteTime = 8.0f;
     public float m_MaxBiteTime = 25.0f;
 
@@ -18,6 +20,8 @@ public class FishingLogic : MonoBehaviour {
     private Vector3 m_initialBiteLoc;
     private float m_biteDistanceToHook = 0.5f;
     private float m_biteTime;
+    private float m_TriggerBiteHaptic;
+    private float m_BiteHapticInterval = 0.1f;
     private float m_biteGracePeriod = 1.0f; //time to react before losing fish
     private bool m_CurrentlyHooked;
     private InteractableItemBase m_HookedObj;
@@ -25,13 +29,15 @@ public class FishingLogic : MonoBehaviour {
     protected float m_targetFishTension;
     protected float m_lastFishTensionChangeTime;
     private float m_ActualFishTension;
-    private float m_tensionToBreakFree = 0.85f;
+    private float m_tensionToBreakFree = 0.7f;
+    private float m_tensionWarningZone = 0.1f;
     private float m_minTensionHapticValue = 500;
-    private float m_maxTensionHapticValue = 3999;
+    private float m_maxTensionHapticValue_PreWarning = 1500;
+    private float m_maxTensionHapticValue_PostWarning = 3999;
 
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
     {
         ResetBite();
         m_CurrentlyHooked = false;
@@ -41,36 +47,40 @@ public class FishingLogic : MonoBehaviour {
 
     private void DoHooked()
     {
-        if( m_lastFishTensionChangeTime == 0 )
+        if( m_lastFishTensionChangeTime <= 0 )
         {
             m_lastFishTensionChangeTime = m_HookedObj.GetRandomFishTensionChangeTime();
             m_targetFishTension = m_HookedObj.GetRandomFishTension();
         }
+        
+        
+        m_lastFishTensionChangeTime -= Time.deltaTime;
+        m_ActualFishTension = Mathf.Lerp( m_ActualFishTension, m_targetFishTension, 0.8f );
+
+        float totalTension = ( m_ActualFishTension + m_FishingRod.GetReelTension() ) * 0.5f;
+
+        if( totalTension > m_tensionToBreakFree )
+        {
+            GameObject.Destroy( m_HookedObj.gameObject ); //we didnt get it, destroy it
+            ResetBite();
+        }
         else
         {
-            m_lastFishTensionChangeTime -= Time.deltaTime;
-            m_ActualFishTension = Mathf.Lerp( m_ActualFishTension, m_targetFishTension, 0.1f ) * Time.deltaTime;
+            //haptic value on a Coserp scale
+            float hapticVal = m_maxTensionHapticValue_PostWarning;
 
-            float totalTension = ( m_ActualFishTension + m_FishingRod.GetReelTension() ) * 0.5f;
-
-            if( totalTension > m_tensionToBreakFree )
+            if( totalTension < m_tensionToBreakFree - m_tensionWarningZone)
             {
-                GameObject.Destroy( m_HookedObj ); //we didnt get it, destroy it
-                ResetBite();
-            }
-            else
+                hapticVal = Mathf.Lerp(m_minTensionHapticValue, m_maxTensionHapticValue_PreWarning, 1.0f - Mathf.Cos((totalTension / m_tensionToBreakFree) * Mathf.PI * 0.5f));
+            }            
+
+            SteamVR_Controller.Device device = m_FishingRod.Device;
+            if (device != null)
             {
-                //haptic value on a Coserp scale
-                float hapticVal = Mathf.Lerp(m_minTensionHapticValue, m_maxTensionHapticValue, 1.0f - Mathf.Cos( (totalTension / m_tensionToBreakFree ) * Mathf.PI * 0.5f));
-
-                SteamVR_Controller.Device device = m_FishingRod.Device;
-                if (device != null)
-                {
-                    device.TriggerHapticPulse((ushort)hapticVal);
-                }
-
-                //DO HAPTICS HERE
+                device.TriggerHapticPulse((ushort)hapticVal);
             }
+
+            //DO HAPTICS HERE
         }
     }
 
@@ -100,15 +110,17 @@ public class FishingLogic : MonoBehaviour {
 
     private void TriggerBite()
     {
-        m_biteTime = Time.timeSinceLevelLoad;
-        m_initialBiteLoc = m_Bobber.transform.position;
+        m_TriggerBiteHaptic -= Time.deltaTime;
 
-        //TODO HAPTICS?
-
-        SteamVR_Controller.Device device = m_FishingRod.Device;
-        if (device != null)
+        if ( !m_CurrentlyHooked && m_TriggerBiteHaptic <= 0 )
         {
-            device.TriggerHapticPulse(2000);
+            m_TriggerBiteHaptic = m_BiteHapticInterval;
+
+            SteamVR_Controller.Device device = m_FishingRod.Device;
+            if (device != null)
+            {
+                device.TriggerHapticPulse(2000);
+            }
         }
     }
 
@@ -150,6 +162,11 @@ public class FishingLogic : MonoBehaviour {
         {
             WaitingForHook();
         }
+
+        if(!m_CurrentlyHooked && m_Bobber.transform.position.y < transform.position.y + 0.05f)
+        {
+            m_BobberBounce.DoBounce();
+        }
     }
 
     void OnCollisionStay(Collision collision)
@@ -163,8 +180,16 @@ public class FishingLogic : MonoBehaviour {
                 if( m_timeTillBite <= 0 )
                 {
                     m_timeTillBite = 0;
-                    TriggerBite();
+                    
+                    m_biteTime = Time.timeSinceLevelLoad;
+                    m_initialBiteLoc = m_Bobber.transform.position;
+
+                    m_TriggerBiteHaptic = 0;
                 }
+            }
+            else if(!m_CurrentlyHooked && m_biteTime != 0)
+            {
+                TriggerBite();
             }
             else if(m_CurrentlyHooked && !m_HookedObj.IsAttached())
             {

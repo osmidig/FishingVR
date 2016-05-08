@@ -7,6 +7,7 @@ public class Spinnybit : InteractableItemBase
     [SerializeField] private ushort m_hapticDuration = 500;
 
     private float m_currentDeltaAngle;
+    private float m_targetDeltaAngle;
 
     private float m_spinnyBuildup = 0f;
 
@@ -54,11 +55,13 @@ public class Spinnybit : InteractableItemBase
             if(m_firstAttached)
             {
                 m_currentDeltaAngle = 0f;
+                m_targetDeltaAngle = 0f;
                 m_firstAttached = false;
             }
             else
             {
-                m_currentDeltaAngle = Mathf.Abs(deltaAngle);
+                m_targetDeltaAngle = Mathf.Abs(deltaAngle);
+                m_currentDeltaAngle = Mathf.Lerp(m_currentDeltaAngle, m_targetDeltaAngle, Time.deltaTime * 5f);
             }
 
             m_spinnyBuildup += m_currentDeltaAngle;
@@ -75,6 +78,7 @@ public class Spinnybit : InteractableItemBase
         {
             m_firstAttached = true;
             m_currentDeltaAngle = 0f;
+            m_targetDeltaAngle = 0f;
         }
     }
 

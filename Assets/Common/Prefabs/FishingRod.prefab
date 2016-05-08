@@ -98,7 +98,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012421040008}
   - 54: {fileID: 54000010992388280}
-  - 136: {fileID: 136000011233752258}
   - 65: {fileID: 65000011056288246}
   - 114: {fileID: 114000011354654854}
   m_Layer: 0
@@ -199,6 +198,7 @@ GameObject:
   - 33: {fileID: 33000010952032594}
   - 23: {fileID: 23000010031302120}
   - 95: {fileID: 95000010019050082}
+  - 114: {fileID: 114000011274286364}
   m_Layer: 11
   m_Name: bobber1
   m_TagString: Untagged
@@ -259,6 +259,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000013302409584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010323135466}
+  - 114: {fileID: 114000011655931748}
+  - 54: {fileID: 54000013388179658}
+  m_Layer: 0
+  m_Name: FakeTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000013351082096
 GameObject:
   m_ObjectHideFlags: 1
@@ -297,7 +314,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010909942048}
-  - 54: {fileID: 54000013176849782}
   m_Layer: 0
   m_Name: FishingRodTip
   m_TagString: Untagged
@@ -323,6 +339,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4000010323135466
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013302409584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4000012421040008}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000010378413928
 Transform:
   m_ObjectHideFlags: 1
@@ -460,6 +489,7 @@ Transform:
   - {fileID: 4000011032562194}
   - {fileID: 4000013327052714}
   - {fileID: 4000012472570544}
+  - {fileID: 4000010323135466}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -16.696001, y: 0, z: 0}
@@ -771,19 +801,19 @@ Rigidbody:
   m_GameObject: {fileID: 1000012633901292}
   serializedVersion: 2
   m_Mass: 0.00005
-  m_Drag: 1
-  m_AngularDrag: 0.05
+  m_Drag: 1.5
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!54 &54000013176849782
+--- !u!54 &54000013388179658
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014043924040}
+  m_GameObject: {fileID: 1000013302409584}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -801,8 +831,8 @@ Rigidbody:
   m_GameObject: {fileID: 1000014134778284}
   serializedVersion: 2
   m_Mass: 0.0001
-  m_Drag: 1
-  m_AngularDrag: 0.05
+  m_Drag: 1.5
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -894,6 +924,19 @@ MonoBehaviour:
   m_hook: {fileID: 4000011032562194}
   m_linePrefab: {fileID: 1000014087661118, guid: 593d8cd62b32de74d942f69ed74b18b9,
     type: 2}
+--- !u!114 &114000011274286364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012442039126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b644522a74c6a7f438ee582a4e7d5db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 1
+  m_multiplier: 0.03
 --- !u!114 &114000011354654854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -911,11 +954,24 @@ MonoBehaviour:
     m_Center: {x: 0.01, y: 1.09, z: -0.34}
     m_Extent: {x: 1.28, y: 1, z: 1}
   m_MouseSensitivity: 4
-  m_ReelSensitivity: 0.001
+  m_ReelSensitivity: 0.005
   m_FishingRodTip: {fileID: 1000014043924040}
   m_Hook: {fileID: 1000012633901292}
   m_Bobber: {fileID: 1000014134778284}
   m_SpinnyBit: {fileID: 114000012624554668}
+--- !u!114 &114000011655931748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013302409584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6853324d37d9d5e4da28e45faf655a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_follow: {fileID: 4000010909942048}
+  m_followSpeed: 20
 --- !u!114 &114000012624554668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -928,7 +984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_attachable: 0
-  m_dynamic: 1
+  m_dynamic: 0
   m_numberOfSnaps: 10
   m_hapticDuration: 500
 --- !u!135 &135000010407897460
@@ -955,19 +1011,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.02
   m_Center: {x: 0, y: -0.045, z: 0.04}
---- !u!136 &136000011233752258
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010986105366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.01
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: -0.005}
 --- !u!137 &137000010615047178
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1041,12 +1084,12 @@ SpringJoint:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014134778284}
-  m_ConnectedBody: {fileID: 54000013176849782}
+  m_ConnectedBody: {fileID: 54000013388179658}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
-  m_Spring: 100000
+  m_Spring: 10
   m_Damper: 0.2
   m_MinDistance: 0.05
   m_MaxDistance: 0.15

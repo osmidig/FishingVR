@@ -4,7 +4,7 @@
 // Shader created with Shader Forge v1.26 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.26;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-6343-OUT,spec-358-OUT,gloss-1813-OUT,normal-5964-RGB,voffset-7189-OUT;n:type:ShaderForge.SFN_Multiply,id:6343,x:32114,y:32712,varname:node_6343,prsc:2|A-7736-RGB,B-6665-RGB;n:type:ShaderForge.SFN_Color,id:6665,x:31830,y:32817,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5019608,c2:0.5019608,c3:0.5019608,c4:1;n:type:ShaderForge.SFN_Tex2d,id:7736,x:31921,y:32620,ptovrint:True,ptlb:Base Color,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32407,y:32978,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:358,x:32250,y:32780,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32250,y:32882,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.8,max:1;n:type:ShaderForge.SFN_TexCoord,id:212,x:31972,y:32965,varname:node_212,prsc:2,uv:1;n:type:ShaderForge.SFN_Transform,id:1676,x:31635,y:33003,varname:node_1676,prsc:2,tffrom:0,tfto:1|IN-2197-OUT;n:type:ShaderForge.SFN_Vector3,id:2197,x:31418,y:33003,varname:node_2197,prsc:2,v1:1,v2:0,v3:1;n:type:ShaderForge.SFN_Sin,id:3285,x:31676,y:33198,varname:node_3285,prsc:2|IN-9210-TSL;n:type:ShaderForge.SFN_Time,id:9210,x:31291,y:33201,varname:node_9210,prsc:2;n:type:ShaderForge.SFN_Multiply,id:3094,x:32016,y:33173,varname:node_3094,prsc:2|A-1676-XYZ,B-8037-OUT;n:type:ShaderForge.SFN_Multiply,id:7189,x:32388,y:33155,varname:node_7189,prsc:2|A-212-V,B-6871-OUT;n:type:ShaderForge.SFN_Multiply,id:6871,x:32205,y:33198,varname:node_6871,prsc:2|A-3094-OUT,B-2035-OUT;n:type:ShaderForge.SFN_Vector1,id:2035,x:31955,y:33329,varname:node_2035,prsc:2,v1:0.25;n:type:ShaderForge.SFN_Sin,id:2610,x:31511,y:33376,varname:node_2610,prsc:2|IN-6886-OUT;n:type:ShaderForge.SFN_Add,id:8037,x:31834,y:33239,varname:node_8037,prsc:2|A-3285-OUT,B-163-OUT;n:type:ShaderForge.SFN_Multiply,id:163,x:31712,y:33376,varname:node_163,prsc:2|A-2610-OUT,B-8588-OUT;n:type:ShaderForge.SFN_Vector1,id:8588,x:31511,y:33578,varname:node_8588,prsc:2,v1:0.3;n:type:ShaderForge.SFN_Multiply,id:6886,x:31320,y:33376,varname:node_6886,prsc:2|A-9210-T,B-820-OUT;n:type:ShaderForge.SFN_Vector1,id:820,x:31117,y:33450,varname:node_820,prsc:2,v1:1.4;proporder:5964-6665-7736-358-1813;pass:END;sub:END;*/
+/*SF_DATA;ver:1.26;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-6343-OUT,spec-358-OUT,gloss-1813-OUT,normal-5964-RGB,voffset-8035-XYZ;n:type:ShaderForge.SFN_Multiply,id:6343,x:32114,y:32712,varname:node_6343,prsc:2|A-7736-RGB,B-6665-RGB;n:type:ShaderForge.SFN_Color,id:6665,x:31830,y:32817,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5019608,c2:0.5019608,c3:0.5019608,c4:1;n:type:ShaderForge.SFN_Tex2d,id:7736,x:31921,y:32620,ptovrint:True,ptlb:Base Color,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32407,y:32978,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:358,x:32250,y:32780,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32250,y:32882,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.8,max:1;n:type:ShaderForge.SFN_TexCoord,id:212,x:31972,y:32965,varname:node_212,prsc:2,uv:0;n:type:ShaderForge.SFN_Vector3,id:2197,x:31418,y:33003,varname:node_2197,prsc:2,v1:1,v2:0,v3:1;n:type:ShaderForge.SFN_Sin,id:3285,x:31676,y:33198,varname:node_3285,prsc:2|IN-9210-TSL;n:type:ShaderForge.SFN_Time,id:9210,x:31291,y:33201,varname:node_9210,prsc:2;n:type:ShaderForge.SFN_Multiply,id:3094,x:32016,y:33173,varname:node_3094,prsc:2|A-2657-XYZ,B-8037-OUT;n:type:ShaderForge.SFN_Multiply,id:7189,x:32388,y:33155,varname:node_7189,prsc:2|A-212-V,B-6871-OUT;n:type:ShaderForge.SFN_Multiply,id:6871,x:32205,y:33198,varname:node_6871,prsc:2|A-3094-OUT,B-2035-OUT;n:type:ShaderForge.SFN_Vector1,id:2035,x:31955,y:33329,varname:node_2035,prsc:2,v1:0.25;n:type:ShaderForge.SFN_Sin,id:2610,x:31511,y:33376,varname:node_2610,prsc:2|IN-6886-OUT;n:type:ShaderForge.SFN_Add,id:8037,x:31834,y:33239,varname:node_8037,prsc:2|A-3285-OUT,B-163-OUT;n:type:ShaderForge.SFN_Multiply,id:163,x:31712,y:33376,varname:node_163,prsc:2|A-2610-OUT,B-8588-OUT;n:type:ShaderForge.SFN_Vector1,id:8588,x:31511,y:33578,varname:node_8588,prsc:2,v1:0.3;n:type:ShaderForge.SFN_Multiply,id:6886,x:31320,y:33376,varname:node_6886,prsc:2|A-9210-T,B-820-OUT;n:type:ShaderForge.SFN_Vector1,id:820,x:31117,y:33450,varname:node_820,prsc:2,v1:0.6;n:type:ShaderForge.SFN_Transform,id:2657,x:31640,y:33003,varname:node_2657,prsc:2,tffrom:0,tfto:1|IN-2197-OUT;n:type:ShaderForge.SFN_Transform,id:8035,x:32738,y:33249,varname:node_8035,prsc:2,tffrom:3,tfto:0|IN-3641-OUT;n:type:ShaderForge.SFN_Sin,id:676,x:32394,y:33639,varname:node_676,prsc:2;n:type:ShaderForge.SFN_Sin,id:505,x:31149,y:33717,varname:node_505,prsc:2|IN-6544-OUT;n:type:ShaderForge.SFN_Add,id:3641,x:32503,y:33457,varname:node_3641,prsc:2|A-7189-OUT,B-6792-OUT;n:type:ShaderForge.SFN_TexCoord,id:5274,x:31937,y:33552,varname:node_5274,prsc:2,uv:1;n:type:ShaderForge.SFN_Multiply,id:6792,x:32120,y:33462,varname:node_6792,prsc:2|A-5968-OUT,B-5274-V;n:type:ShaderForge.SFN_Multiply,id:5968,x:31543,y:33707,varname:node_5968,prsc:2|A-2657-XYZ,B-4632-OUT;n:type:ShaderForge.SFN_TexCoord,id:4170,x:30532,y:33845,varname:node_4170,prsc:2,uv:1;n:type:ShaderForge.SFN_Multiply,id:6544,x:30924,y:33717,varname:node_6544,prsc:2|A-9210-T,B-5277-OUT;n:type:ShaderForge.SFN_RemapRange,id:5277,x:30745,y:33845,varname:node_5277,prsc:2,frmn:0,frmx:1,tomn:0,tomx:1|IN-4170-V;n:type:ShaderForge.SFN_Multiply,id:4632,x:31369,y:33849,varname:node_4632,prsc:2|A-505-OUT,B-798-OUT;n:type:ShaderForge.SFN_Vector1,id:798,x:31041,y:34000,varname:node_798,prsc:2,v1:0.03;proporder:5964-6665-7736-358-1813;pass:END;sub:END;*/
 
 Shader "Shader Forge/PalmShader" {
     Properties {
@@ -88,10 +88,9 @@ Shader "Shader Forge/PalmShader" {
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
                 o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
+                float3 node_2657 = mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz;
                 float4 node_9210 = _Time + _TimeEditor;
-                float node_3285 = sin(node_9210.r);
-                float node_2610 = sin((node_9210.g*1.4));
-                v.vertex.xyz += (o.uv1.g*((mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz.rgb*(node_3285+(node_2610*0.3)))*0.25));
+                v.vertex.xyz += mul( float4(((o.uv0.g*((node_2657.rgb*(sin(node_9210.r)+(sin((node_9210.g*0.6))*0.3)))*0.25))+((node_2657.rgb*(sin((node_9210.g*(o.uv1.g*1.0+0.0)))*0.03))*o.uv1.g)),0), UNITY_MATRIX_V ).xyz.rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
@@ -249,10 +248,9 @@ Shader "Shader Forge/PalmShader" {
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
                 o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
+                float3 node_2657 = mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz;
                 float4 node_9210 = _Time + _TimeEditor;
-                float node_3285 = sin(node_9210.r);
-                float node_2610 = sin((node_9210.g*1.4));
-                v.vertex.xyz += (o.uv1.g*((mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz.rgb*(node_3285+(node_2610*0.3)))*0.25));
+                v.vertex.xyz += mul( float4(((o.uv0.g*((node_2657.rgb*(sin(node_9210.r)+(sin((node_9210.g*0.6))*0.3)))*0.25))+((node_2657.rgb*(sin((node_9210.g*(o.uv1.g*1.0+0.0)))*0.03))*o.uv1.g)),0), UNITY_MATRIX_V ).xyz.rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
@@ -336,23 +334,25 @@ Shader "Shader Forge/PalmShader" {
             uniform float4 _TimeEditor;
             struct VertexInput {
                 float4 vertex : POSITION;
+                float2 texcoord0 : TEXCOORD0;
                 float2 texcoord1 : TEXCOORD1;
                 float2 texcoord2 : TEXCOORD2;
             };
             struct VertexOutput {
                 V2F_SHADOW_CASTER;
-                float2 uv1 : TEXCOORD1;
-                float2 uv2 : TEXCOORD2;
-                float4 posWorld : TEXCOORD3;
+                float2 uv0 : TEXCOORD1;
+                float2 uv1 : TEXCOORD2;
+                float2 uv2 : TEXCOORD3;
+                float4 posWorld : TEXCOORD4;
             };
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
+                o.uv0 = v.texcoord0;
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
+                float3 node_2657 = mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz;
                 float4 node_9210 = _Time + _TimeEditor;
-                float node_3285 = sin(node_9210.r);
-                float node_2610 = sin((node_9210.g*1.4));
-                v.vertex.xyz += (o.uv1.g*((mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz.rgb*(node_3285+(node_2610*0.3)))*0.25));
+                v.vertex.xyz += mul( float4(((o.uv0.g*((node_2657.rgb*(sin(node_9210.r)+(sin((node_9210.g*0.6))*0.3)))*0.25))+((node_2657.rgb*(sin((node_9210.g*(o.uv1.g*1.0+0.0)))*0.03))*o.uv1.g)),0), UNITY_MATRIX_V ).xyz.rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
                 TRANSFER_SHADOW_CASTER(o)
@@ -413,10 +413,9 @@ Shader "Shader Forge/PalmShader" {
                 o.uv0 = v.texcoord0;
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
+                float3 node_2657 = mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz;
                 float4 node_9210 = _Time + _TimeEditor;
-                float node_3285 = sin(node_9210.r);
-                float node_2610 = sin((node_9210.g*1.4));
-                v.vertex.xyz += (o.uv1.g*((mul( unity_WorldToObject, float4(float3(1,0,1),0) ).xyz.rgb*(node_3285+(node_2610*0.3)))*0.25));
+                v.vertex.xyz += mul( float4(((o.uv0.g*((node_2657.rgb*(sin(node_9210.r)+(sin((node_9210.g*0.6))*0.3)))*0.25))+((node_2657.rgb*(sin((node_9210.g*(o.uv1.g*1.0+0.0)))*0.03))*o.uv1.g)),0), UNITY_MATRIX_V ).xyz.rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = UnityMetaVertexPosition(v.vertex, v.texcoord1.xy, v.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST );
                 return o;
