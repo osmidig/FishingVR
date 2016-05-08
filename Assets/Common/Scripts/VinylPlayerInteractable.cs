@@ -9,17 +9,20 @@ public class VinylPlayerInteractable : InteractableItemBase {
 
     private Vinyl m_currentVinyl;
 
-	// Use this for initialization
-	void Start () {
+	protected override void Awake ()
+    {
+        base.Awake();
         m_audioSource = GetComponent<AudioSource>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if( m_currentVinyl != null && m_currentVinyl.IsAttached() )
+
+	protected override void Update () {
+        base.Update();
+
+        if ( m_currentVinyl != null && m_currentVinyl.IsAttached() )
         {
             m_audioSource.Stop();
             m_audioSource.clip = null;
+            m_currentVinyl.GetComponent<Collider>().isTrigger = false;
             m_currentVinyl = null;
         }
 	}
@@ -28,7 +31,7 @@ public class VinylPlayerInteractable : InteractableItemBase {
     {
         Vinyl v = c.collider.gameObject.GetComponent<Vinyl>();
 
-        if( v != null && m_currentVinyl == null )
+        if( v != null && m_currentVinyl == null && !v.IsAttached() )
         {
             PlayNewVinyl( v );
         }
@@ -39,6 +42,9 @@ public class VinylPlayerInteractable : InteractableItemBase {
         m_audioSource.Stop();
         m_audioSource.clip = v.m_clip;
         m_audioSource.Play();
+
+        v.GetComponent<Collider>().isTrigger = true;
+        v.GetComponent<Rigidbody>().isKinematic = true;
 
         v.transform.SetParent( transform );
         v.transform.position = m_VinylSnapTransform.position;

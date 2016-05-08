@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000010105254446}
   - 33: {fileID: 33000014210666326}
   - 23: {fileID: 23000010950749882}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VinylPlayer_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - 65: {fileID: 65000013011435464}
   - 82: {fileID: 82000010835384256}
   - 114: {fileID: 114000013601899508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VinylPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - 33: {fileID: 33000012688466504}
   - 23: {fileID: 23000012451083044}
   - 95: {fileID: 95000011968999804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: vinylplayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013871643816}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VinlySnapLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,13 +128,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012942788574}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.055, z: -0.058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4000010515269656}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!23 &23000010950749882
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -222,7 +222,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65000013011435464
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -252,7 +252,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -280,7 +280,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 0
+      value: 0.8
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -297,7 +297,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

@@ -50,7 +50,9 @@ public class InteractableHand : MonoBehaviour
                 InteractableItemBase item = other.GetComponentInParent<InteractableItemBase>();
                 if (item != null)
                 {
-                    if(item.Attachable)
+                    if (!item.IsAttached())
+                        m_triggerUsed = true;
+                    if (item.Attachable)
                     {
                         AttachItem(item);
                     }
@@ -58,7 +60,6 @@ public class InteractableHand : MonoBehaviour
                     {
                         PickupItem(item);
                     }
-                    m_triggerUsed = true;
                 }
             }
         }

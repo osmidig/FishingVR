@@ -60,7 +60,11 @@ public class InteractableItemBase : MonoBehaviour
     {
         m_transform = transform;
         m_rigidbody = GetComponent<Rigidbody>();
-        if(m_rigidbody != null) m_rigidbody.isKinematic = !m_dynamic;
+        if(m_rigidbody != null)
+        {
+            m_rigidbody.isKinematic = !m_dynamic;
+            m_rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        }
     }
 
     protected virtual void Update()
