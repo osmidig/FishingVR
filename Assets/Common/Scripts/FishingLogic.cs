@@ -179,19 +179,20 @@ public class FishingLogic : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision)
-    {
-        
+    {        
         if( collision.collider.gameObject == m_Bobber )
         {
             if( m_bobberEffectTimer == 0 )
             {
-                m_BobberEffect.Play();
+                if (collision.relativeVelocity.sqrMagnitude > Mathf.Pow(m_SplashForce, 2.0f))
+                {
+                    m_SplashEffect.Play();
+                }
+                else
+                {
+                    m_BobberEffect.Play();
+                }
                 m_bobberEffectTimer = m_bobberEffectDelay;
-            }
-
-            if( collision.relativeVelocity.sqrMagnitude > Mathf.Pow( m_SplashForce, 2.0f ) )
-            {
-                m_SplashEffect.Play();
             }
         }
     }
