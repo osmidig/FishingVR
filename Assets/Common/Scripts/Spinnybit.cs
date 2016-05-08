@@ -5,6 +5,7 @@ public class Spinnybit : InteractableItemBase
 {
     [SerializeField] private int m_numberOfSnaps = 10;
     [SerializeField] private ushort m_hapticDuration = 500;
+    [SerializeField] private AudioClip[] m_clickSounds;
 
     private float m_currentDeltaAngle;
     private float m_targetDeltaAngle;
@@ -14,6 +15,8 @@ public class Spinnybit : InteractableItemBase
     private bool m_firstAttached = true;
     private Transform m_attachedHand;
 
+    private AudioSource m_audio;
+
     public float GetCurrentDeltaAngle()
     {
 
@@ -22,6 +25,12 @@ public class Spinnybit : InteractableItemBase
 #else
         return m_currentDeltaAngle;
 #endif
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        m_audio = GetComponent<AudioSource>();
     }
 
     protected override void Update()
@@ -72,6 +81,7 @@ public class Spinnybit : InteractableItemBase
                 m_spinnyBuildup -= snapAngle;
                 //m_device.TriggerHapticPulse(500, Valve.VR.EVRButtonId.k_EButton_Axis0);
                 m_device.TriggerHapticPulse(m_hapticDuration, Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+                m_audio.PlayOneShot(m_clickSounds[Random.Range(0, m_clickSounds.Length)]);
             }
         }
         else
