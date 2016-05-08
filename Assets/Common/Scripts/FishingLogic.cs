@@ -46,6 +46,8 @@ public class FishingLogic : MonoBehaviour {
     private float m_bobberEffectTimer = 0;
     private float m_bobberEffectDelay = 1.0f;
 
+    private List<InteractableItemBase> m_currentBucket;
+
 
     // Use this for initialization
     void Start () 
@@ -73,6 +75,7 @@ public class FishingLogic : MonoBehaviour {
         {
             GameObject.Destroy( m_HookedObj.gameObject ); //we didnt get it, destroy it
             ResetBite();
+            m_currentBucket = null;
         }
         else
         {
@@ -148,20 +151,6 @@ public class FishingLogic : MonoBehaviour {
         return null;
     }
 
-    private List<InteractableItemBase> GetPostGameFishBucket()
-    {
-        if( m_Bobber.transform.position.sqrMagnitude > Mathf.Pow( m_LongFishingRadius, 2.0f ) )
-        {
-            return m_PostGameHookableObjects_Long;
-        }
-        else if( m_Bobber.transform.position.sqrMagnitude > Mathf.Pow( m_MediumFishingRadius, 2.0f ) )
-        {
-            return m_PostGameHookableObjects_Medium;
-        }
-
-        return null;
-    }
-
     private void Hook()
     {
         List<InteractableItemBase> bucket = GetFishBucket();
@@ -172,6 +161,8 @@ public class FishingLogic : MonoBehaviour {
             m_HookedObj = (InteractableItemBase)GameObject.Instantiate( bucket[ 0 ], Vector3.zero, Quaternion.identity );
             m_FishingRod.HookObject( m_HookedObj );
             m_biteTime = 0;
+
+            m_currentBucket = bucket;
         }
     }
 
@@ -183,20 +174,21 @@ public class FishingLogic : MonoBehaviour {
             {
                 m_CurrentlyHooked = false;
 
-                List<InteractableItemBase> bucket = GetFishBucket();
-                List<InteractableItemBase> postGameBucket = GetPostGameFishBucket();
+                List<InteractableItemBase> postGameBucket = m_currentBucket == m_HookableObjects_Long ? m_PostGameHookableObjects_Long : m_PostGameHookableObjects_Medium;
 
                 //remove this catch from the list
-                if (bucket.Count > 0)
+                if (m_currentBucket.Count > 0)
                 {
-                    bucket.RemoveAt(0);
+                    m_currentBucket.RemoveAt(0);
                 }
 
                 //if we've caught everything, add a random "extra"
-                if (bucket.Count == 0)
+                if (m_currentBucket.Count == 0)
                 {
-                    bucket.Add(postGameBucket[Random.Range(0, postGameBucket.Count)]);
+                    m_currentBucket.Add(postGameBucket[Random.Range(0, postGameBucket.Count)]);
                 }
+
+                m_currentBucket = null;
 
                 ResetBite();
             }
