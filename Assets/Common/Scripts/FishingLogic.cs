@@ -23,6 +23,8 @@ public class FishingLogic : MonoBehaviour {
     public float m_SplashForce = 10.0f;
     public ParticleSystem m_SplashEffect;
 
+    public AudioClip[] m_splashSounds;
+
     private float m_timeTillBite;
 
     private Vector3 m_initialBiteLoc;
@@ -224,6 +226,7 @@ public class FishingLogic : MonoBehaviour {
                 {
                     m_SplashEffect.transform.position = collision.transform.position;
                     m_SplashEffect.Play();
+                    AudioSource.PlayClipAtPoint(m_splashSounds[Random.Range(0, m_splashSounds.Length)], collision.transform.position);
                 }
 
                 m_BobberEffect.transform.position = collision.transform.position;

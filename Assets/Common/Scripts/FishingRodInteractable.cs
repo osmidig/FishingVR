@@ -25,6 +25,11 @@ public class FishingRodInteractable : InteractableItemBase
 
     private FishingLogic m_fishingLogic;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
 	// Use this for initialization
 	void Start () 
     {
