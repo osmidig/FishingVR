@@ -985,7 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_attachable: 0
-  m_dynamic: 1
+  m_dynamic: 0
   m_numberOfSnaps: 10
   m_hapticDuration: 500
 --- !u!135 &135000010407897460
