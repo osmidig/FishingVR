@@ -16,6 +16,7 @@ ModelImporter:
     100016: RodBone_6
     100018: RodBone_7
     100020: Spinnybit
+    100022: Box001
     400000: //RootNode
     400002: LongRodBit
     400004: RodBase
@@ -27,17 +28,21 @@ ModelImporter:
     400016: RodBone_6
     400018: RodBone_7
     400020: Spinnybit
+    400022: Box001
     2300000: RodBase
     2300002: Spinnybit
     2300004: LongRodBit
     2300006: //RootNode
+    2300008: Box001
     3300000: RodBase
     3300002: Spinnybit
     3300004: LongRodBit
     3300006: //RootNode
+    3300008: Box001
     4300000: RodBase
     4300002: Spinnybit
     4300004: LongRodBit
+    4300006: Box001
     9500000: //RootNode
     11100000: //RootNode
     13700000: LongRodBit
