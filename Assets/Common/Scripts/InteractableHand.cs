@@ -26,7 +26,7 @@ public class InteractableHand : MonoBehaviour
 
         if(m_heldObject != null)
         {
-            if((m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip) || (!m_device.GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger) && !m_itemAttached)) && !m_attachedThisFrame)
+            if(((m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip) && m_heldObject.Attachable) || (!m_device.GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger) && !m_itemAttached)) && !m_attachedThisFrame)
             {
                 DetachItem();
             }
@@ -43,7 +43,10 @@ public class InteractableHand : MonoBehaviour
     {
         if (m_triggerUsed) return;
 
-        if (m_device != null && (m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip) || m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger)))
+        bool inputGripDown = m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip);
+        bool inputTriggerDown = m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
+
+        if (m_device != null && (inputGripDown || inputTriggerDown))
         {
             if (m_heldObject == null)
             {
@@ -58,7 +61,8 @@ public class InteractableHand : MonoBehaviour
                     }
                     else
                     {
-                        PickupItem(item);
+                        if(!inputGripDown)
+                            PickupItem(item);
                     }
                 }
             }

@@ -24,6 +24,7 @@ public class FishingRodInteractable : InteractableItemBase
     private bool m_spoolLocked;
     private bool m_spoolPreviouslyLocked;
     private SpringJoint m_BobberJoint;
+    //private SpringJoint m_HookJoint;
     private float m_SpoolDeltaForMaxTension = 30.0f; //what spool speed is considered "maximum" tension
 
     private AudioSource m_audio;
@@ -43,6 +44,12 @@ public class FishingRodInteractable : InteractableItemBase
 
         m_BobberJoint = m_Bobber.GetComponent< SpringJoint >();
 
+        /*
+        m_HookJoint = m_Hook.GetComponent<SpringJoint>();
+        
+        m_BobberJoint.maxDistance = Vector3.Distance(m_FishingRodTip.transform.position, m_Bobber.transform.position);
+        m_HookJoint.maxDistance = Vector3.Distance(m_Bobber.transform.position, m_Hook.transform.position);
+        */
         m_fishingLogic = FindObjectOfType<FishingLogic>();
 	}
 	
