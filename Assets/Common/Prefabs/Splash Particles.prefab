@@ -19,6 +19,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011771578260}
+  - 114: {fileID: 114000014279559178}
+  - 82: {fileID: 82000012295031010}
   m_Layer: 0
   m_Name: Splash Particles
   m_TagString: Untagged
@@ -161,6 +163,99 @@ Transform:
   m_Father: {fileID: 4000011771578260}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.5860001, y: 0, z: 0}
+--- !u!82 &82000012295031010
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010206155566}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 1
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114000014279559178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010206155566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7359f57e78b3349b26952674714377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_splashParticle: {fileID: 198000010753077048}
+  m_splashAudio: {fileID: 82000012295031010}
+  m_splashSounds:
+  - {fileID: 8300000, guid: 2b398e408d2273d4c888b47da92451d7, type: 3}
+  - {fileID: 8300000, guid: 5f2677a1c4a4fe04ea05b93169fb67d0, type: 3}
+  - {fileID: 8300000, guid: 11f52e055adc70c4097b3fc7478f450a, type: 3}
+  - {fileID: 8300000, guid: e88bc1483becde84dbdb30003864876d, type: 3}
+  - {fileID: 8300000, guid: 41e114bc12ce4a44d83fad7fcc843f18, type: 3}
 --- !u!198 &198000010753077048
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -24,6 +24,15 @@ public class InteractableHand : MonoBehaviour
     {
         if (m_device == null) return;
 
+        if(m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_ApplicationMenu))
+        {
+            SpectatorCamera specCamera = FindObjectOfType<SpectatorCamera>();
+            if(specCamera != null)
+            {
+                specCamera.MoveCamera(transform.position, transform.rotation);
+            }
+        }
+
         if(m_heldObject != null)
         {
             if(((m_device.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip) && m_heldObject.Attachable) || (!m_device.GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger) && !m_itemAttached)) && !m_attachedThisFrame)

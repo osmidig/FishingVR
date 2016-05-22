@@ -3,14 +3,12 @@ using System.Collections;
 
 public class SaxInteractable : InteractableItemBase
 {
+    [SerializeField] private AudioSource m_audio;
     [SerializeField] private AudioClip[] m_saxSounds;
-
-    private AudioSource m_audio;
 
     protected override void Awake()
     {
         base.Awake();
-        m_audio = GetComponent<AudioSource>();
         m_audio.loop = false;
         m_audio.playOnAwake = false;
     }

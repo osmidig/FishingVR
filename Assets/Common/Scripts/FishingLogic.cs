@@ -13,7 +13,8 @@ public class FishingLogic : MonoBehaviour {
     public List<InteractableItemBase> m_PostGameHookableObjects_Long;
 
     public BobberBounce m_BobberBounce;
-    public ParticleSystem m_BobberEffect;
+    public GameObject m_BobberEffect;
+    public GameObject m_SplashEffect;
 
     public float m_MinBiteTime = 8.0f;
     public float m_MaxBiteTime = 25.0f;
@@ -21,10 +22,7 @@ public class FishingLogic : MonoBehaviour {
     public float m_LongFishingRadius = 22.0f;
 
     public float m_SplashForce = 10.0f;
-    public ParticleSystem m_SplashEffect;
-
-    public AudioClip[] m_splashSounds;
-
+    
     private float m_timeTillBite;
 
     private Vector3 m_initialBiteLoc;
@@ -216,13 +214,18 @@ public class FishingLogic : MonoBehaviour {
             {
                 if (collision.relativeVelocity.sqrMagnitude > Mathf.Pow(m_SplashForce, 2.0f))
                 {
-                    m_SplashEffect.transform.position = collision.transform.position;
-                    m_SplashEffect.Play();
-                    AudioSource.PlayClipAtPoint(m_splashSounds[Random.Range(0, m_splashSounds.Length)], collision.transform.position);
+                    GameObject splashInstance = Instantiate(m_SplashEffect, collision.transform.position, Quaternion.identity) as GameObject;
+                    SplashEffect splash = splashInstance.GetComponent<SplashEffect>();
+                    if(splash != null)
+                    {
+                        splash.Splash();
+                    }
                 }
 
-                m_BobberEffect.transform.position = collision.transform.position;
-                m_BobberEffect.Play();
+                GameObject bobberInstance = Instantiate(m_BobberEffect, collision.transform.position, Quaternion.identity) as GameObject;
+                ParticleSystem ps = bobberInstance.GetComponent<ParticleSystem>();
+                if (ps != null) ps.Play();
+                Destroy(bobberInstance, 5f);
 
                 m_bobberEffectTimer = m_bobberEffectDelay;
             }

@@ -55,9 +55,24 @@ GameObject:
   - 4: {fileID: 4000010578294252}
   - 54: {fileID: 54000012152385132}
   - 114: {fileID: 114000013272656638}
-  - 82: {fileID: 82000013461338650}
   m_Layer: 9
   m_Name: Sax
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000013764844440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012581545248}
+  - 82: {fileID: 82000012374430362}
+  m_Layer: 9
+  m_Name: AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,6 +90,7 @@ Transform:
   m_Children:
   - {fileID: 4000012149131582}
   - {fileID: 4000014137430032}
+  - {fileID: 4000012581545248}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,6 +107,19 @@ Transform:
   m_Father: {fileID: 4000010578294252}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!4 &4000012581545248
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013764844440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.183, z: -0.146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4000010578294252}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000014137430032
 Transform:
   m_ObjectHideFlags: 1
@@ -168,12 +197,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4709026, y: 0.1397272, z: 0.6803361}
   m_Center: {x: 0.2109551, y: 0.000000007450581, z: 0.28783852}
---- !u!82 &82000013461338650
+--- !u!82 &82000012374430362
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013436545642}
+  m_GameObject: {fileID: 1000013764844440}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -183,7 +212,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -255,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attachable: 1
   m_dynamic: 1
+  m_audio: {fileID: 82000012374430362}
   m_saxSounds:
   - {fileID: 8300000, guid: 605a4bf084ba941458f714933fe88f81, type: 3}
   - {fileID: 8300000, guid: d0f8371175a6ff94bb9c5038723e9be0, type: 3}
